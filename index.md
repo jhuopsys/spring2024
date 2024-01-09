@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Operating Systems, Spring 2024"
+title: "Principles of Operating Systems, Spring 2024"
 category: "home"
 ---
 
