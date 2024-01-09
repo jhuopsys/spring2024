@@ -37,22 +37,22 @@ Feb 7 | Synchronization | [Chapter 28](http://pages.cs.wisc.edu/~remzi/OSTEP/thr
 Feb 12 | Semaphores and Monitors | [Chapter 30](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf), [Chapter 31](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf) | 
 Feb 14 | <span class='tentative'>Synchronization exercises</span> |  | 
 Feb 19 | Deadlock | [Chapter 32](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf) | 
-Feb 21 | **Exam 1**, in class |  | 
-Feb 26 | Virtual memory 1 | Reading | 
-Feb 28 | Virtual memory in PintOS | Reading | 
-Mar 4 | Topic | Reading | 
-Mar 6 |  |  | 
-Mar 11 |  |  | 
-Mar 13 |  |  | 
+Feb 21 | Slack day/exam review |  | 
+Feb 26 | **Exam 1**, in class |  | 
+Feb 28 | Virtual memory 1 | [Chapter 15](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf), [Chapter 16](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf),<br>[Chapter 17](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf) | 
+Mar 4 | Virtual memory in PintOS |  | 
+Mar 6 | Virtual memory II | [Chapter 19](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf), [Chapter 20](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-smalltables.pdf) | 
+Mar 11 | Page replacement | [Chapter 21](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf), [Chapter 22](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf),<br>[Chapter 23](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-vax.pdf) | 
+Mar 13 | Dynamic memory allocation | [Chapter 14](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-api.pdf), [Chapter 17](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf) | 
 Mar 18–22 | **Spring break, no classes** |  | 
-Mar 25 |  |  | 
-Mar 27 |  |  | 
-Apr 1 | **Exam 2**, in class |  | 
-Apr 3 |  |  | 
-Apr 8 |  |  | 
-Apr 10 |  |  | 
-Apr 15 |  |  | 
-Apr 17 |  |  | 
-Apr 22 |  |  | 
-Apr 24 |  |  | 
+Mar 25 | IO and disks | [Chapter 36](http://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf), [Chapter 37](http://pages.cs.wisc.edu/~remzi/OSTEP/file-disks.pdf) | 
+Mar 27 | File systems | [Chapter 39](http://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf) | 
+Apr 1 | File systems implementation | [Chapter 40](http://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf) | 
+Apr 3 | Slack day/exam review |  | 
+Apr 8 | **Exam 2**, in class |  | 
+Apr 10 | Unix Fast File System | [Chapter 41](http://pages.cs.wisc.edu/~remzi/OSTEP/file-ffs.pdf), [FFS paper](https://dsf.berkeley.edu/cs262/FFS.pdf) | 
+Apr 15 | Log structured filesystems | [Chapter 43](http://pages.cs.wisc.edu/~remzi/OSTEP/file-lfs.pdf), [LFS paper](https://dl.acm.org/doi/pdf/10.1145/146941.146943) | 
+Apr 17 | fsck and journaling | [Chapter 42](http://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf) | 
+Apr 22 | Virtual machines | [Appendix B](http://pages.cs.wisc.edu/~remzi/OSTEP/vmm-intro.pdf) | 
+Apr 24 | Slack day/exam review |  | 
 TBD | **Exam 3**, during scheduled<br>final exam time |  | 
