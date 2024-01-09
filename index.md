@@ -8,7 +8,7 @@ Welcome to the website for Operating Systems (Spring 2024)
 at <a href="https://www.jhu.edu/">Johns Hopkins University</a>!
 
 This course covers the design and implementation of operating systems.
-In a series of assignemnts, students will implement significant parts of
+In a series of assignments, students will implement significant parts of
 a realistic OS kernel.
 
 All public information about the course (readings, assignments, etc.) will
