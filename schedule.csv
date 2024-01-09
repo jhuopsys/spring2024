@@ -1,42 +1,29 @@
 Date,Topic,Slides,"Example Code",Reading,Assignment
-Jan 22,"",,,Reading,
-Jan 24,"",
-Jan 26,"",
-Jan 29,"",
-Jan 31,"",
-Feb 2,"",
-Feb 5,"",
-Feb 7,"",
-Feb 9,"",
-Feb 12,"",
-Feb 14,"",
-Feb 16,"",
-Feb 19,"",
-Feb 21,"",
-Feb 23,"",
-Feb 26,"",
-Feb 28,"",
-Mar 1,"",
-Mar 4,"",
-Mar 6,"",
-Mar 8,"",
-Mar 11,"",
-Mar 13,"",
-Mar 15,"",
+Jan 22,"Course intro",,,"[Chapter 1](http://pages.cs.wisc.edu/~remzi/OSTEP/dialogue-threeeasy.pdf), [Chapter 2](http://pages.cs.wisc.edu/~remzi/OSTEP/intro.pdf)",
+Jan 24,"OS architectural support",,,"[Chapter 6](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf)",
+Jan 29,"Processes",,,"[Chapter 4](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf), [Chapter 5](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf)",
+Jan 31,"Threads",,,"[Chapter 26](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf), [Chapter 27](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf)",
+Feb 5,"Scheduling",,,"[Chapter 7](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf), [Chapter 8](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf)",
+Feb 7,"Synchronization",,,"[Chapter 28](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf), [Chapter 29](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks-usage.pdf)",
+Feb 12,"Semaphores and Monitors",,,"[Chapter 30](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf), [Chapter 31](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf)"
+Feb 14,"<span class='tentative'>Synchronization exercises</span>",
+Feb 19,"Deadlock",,,"[Chapter 32](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf)"
+Feb 21,"**Exam 1**, in class",
+Feb 26,"Virtual memory 1",,,"Reading"
+Feb 28,"Virtual memory in PintOS",,,"Reading"
+Mar 4,"Topic",,,"Reading"
+Mar 6,"",,,"Reading"
+Mar 11,"",,,"Reading"
+Mar 13,"",,,"Reading"
 Mar 18–22,"**Spring break, no classes**"
-Mar 25,"",
-Mar 27,"",
-Mar 29,"",
-Apr 1,"",
-Apr 3,"",
-Apr 5,"",
-Apr 8,"",
-Apr 10,"",
-Apr 12,"",
-Apr 15,"",
-Apr 17,"",
-Apr 19,"",
-Apr 22,"",
-Apr 24,"",
-Apr 26,"",
-TBD,""
+Mar 25,"",,,"Reading"
+Mar 27,"",,,"Reading"
+Apr 1,"**Exam 2**, in class",
+Apr 3,"",,,"Reading"
+Apr 8,"",,,"Reading"
+Apr 10,"",,,"Reading"
+Apr 15,"",,,"Reading"
+Apr 17,"",,,"Reading"
+Apr 22,"",,,"Reading"
+Apr 24,"",,,"Reading"
+TBD,"**Exam 3**, during scheduled<br>final exam time"

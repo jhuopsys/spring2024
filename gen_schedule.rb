@@ -17,7 +17,9 @@ This schedule could change!  Changes
 to the schedule will be announced in class and/or on
 [Courselore](https://courselore.org/).
 
-Readings are from: [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/).
+Readings are from [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/).
+This is an open-source textbook, and you can use the links below to access the chapters
+directly.
 
 **Important**: do the reading *before*
 you come to class.
@@ -25,6 +27,9 @@ you come to class.
 The links to slides are provided for reference.  In general, there is no
 guarantee that they will be posted before class, or that their content
 will not change.
+
+Acknowledgment: The course schedule and structure is based on
+[Ryan Huang](https://web.eecs.umich.edu/~ryanph/)'s [version of the course](https://www.cs.jhu.edu/~huang/cs318/fall22/).
 
 Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Topic/Slides | Reading | Assignment
 ------------------ | ------------ | ------- | ----------
