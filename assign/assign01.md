@@ -103,7 +103,7 @@ Allocation](pintos/pintos_7.html#SEC122)).
 
 ### Source Files
 
-[Listing 1](listing_1.html){target="_blank"} provides a brief overview
+[Listing 1](assign01/listing_1.html) provides a brief overview
 of the files in the "`threads`" directory. You will not need to modify
 most of this code, but the hope is that presenting this overview will
 give you a start on what code to look at.
