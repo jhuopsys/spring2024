@@ -1,14 +1,14 @@
-// Global object for CSF data and functions
+// Global object for OS data and functions
 os = {
-	onLoad: function() {
-		if (os.pageCategory) {
-			console.log("Found page category");
-			activeLink = document.getElementById("navbar_" + os.pageCategory);
-			if (activeLink) {
-				console.log("Found active link");
-				activeLink.classList.add("active");
-			}
-		}
+  onLoad: function() {
+    if (os.pageCategory) {
+      console.log("Found page category");
+      activeLink = document.getElementById("navbar_" + os.pageCategory);
+      if (activeLink) {
+        console.log("Found active link");
+        activeLink.classList.add("active");
+      }
+    }
 
     // Add styling to "shell" blocks
     // by converting each line into a span with class "line"
@@ -24,7 +24,5 @@ os = {
                         + "</span></span></pre>"
       }
     }
-	}
+  }
 }
-
-// vim:ts=2:

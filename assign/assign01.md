@@ -64,7 +64,7 @@ context switches when one thread needs to wait for another thread to do
 something.
 
 The mechanics of a context switch are in "`threads/switch.S`", which is
-80`x`{.variable}86 assembly code. (You don\'t have to understand it.) It
+80`x`86 assembly code. (You don\'t have to understand it.) It
 saves the state of the currently running thread and restores the state
 of the thread we\'re switching to.
 
@@ -81,7 +81,7 @@ understand the thread system once you understand why and how the
 `switch_threads()` that returns. See section [A.2.3 Thread
 Switching](pintos/pintos_7.html#SEC110), for more information.
 
-<div class='admonition caution'>
+<div class='admonition danger'>
   <div class='title'>Warning</div>
   <div class='content' markdown='1'>
 In Pintos, each thread is assigned a small, fixed-size execution stack
@@ -95,24 +95,12 @@ Allocation](pintos/pintos_7.html#SEC122)).
   </div>
 </div>
 
-[]{#Project 1 Source Files}
-
-------------------------------------------------------------------------
-
-[]{#SEC28}
-
 ### Source Files
 
 [Listing 1](assign01/listing_1.html) provides a brief overview
 of the files in the "`threads`" directory. You will not need to modify
 most of this code, but the hope is that presenting this overview will
 give you a start on what code to look at.
-
-[]{#Project 1 Synchronization}
-
-------------------------------------------------------------------------
-
-[]{#SEC31}
 
 ### Synchronization
 
@@ -160,12 +148,6 @@ out, because that can make the code difficult to read.)
 There should be no busy waiting in your submission. A tight loop that
 calls `thread_yield()` is one form of busy waiting.
 
-[]{#Development Suggestions}
-
-------------------------------------------------------------------------
-
-[]{#SEC32}
-
 ### Development Suggestions
 
 In the past, many groups divided the assignment into pieces, then each
@@ -194,35 +176,23 @@ backtraces (see section [E.4 Backtraces](pintos/pintos_11.html#SEC160)), which
 will help you to get the most out of every kernel panic or assertion
 failure.
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-bell}  **Tips**
-:::
-
-::: panel-body
+<div class='admonition tip'>
+  <div class='title'>Tip</div>
+  <div class='content' markdown='1'>
 We also suggest you to read the requirement description as well as the
-[FAQs](#SEC39) carefully\-\--perhaps multiple times. A lot of the
+[FAQs](#SEC39) carefully—perhaps multiple times. A lot of the
 confusions come from not reading them carefully.
-:::
-:::
+  </div>
+</div>
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-bell}  **Tips**
-:::
-
-::: panel-body
+<div class='admonition tip'>
+  <div class='title'>Tip</div>
+  <div class='content' markdown='1'>
 `make check` runs all tests. If you are debugging one test, you can run
 just that test with `make tests/threads/<test_case>.result`. Read the
 [Testing](debugtest.html) part for more details.
-:::
-:::
-
-[]{#Project 1 Suggested Order of Implementation}
-
-------------------------------------------------------------------------
-
-[]{#SEC33}
+  </div>
+</div>
 
 ## Suggested Order of Implementation
 
@@ -232,8 +202,8 @@ parallel:
 -   Optimized `timer_sleep()` in Exercise 1.1.
 -   Basic support for priority scheduling in Exercise 2.1 when a new
     thread is created in `thread_create()`.
--   Implement fixed-point real arithmetic routines ([B.6 Fixed-Point
-    Real Arithmetic](pintos/pintos_8.html#SEC148)) that are needed for MLFQS in
+-   Implement fixed-point real arithmetic routines
+    ([B.6 Fixed-Point Real Arithmetic](pintos/pintos_8.html#SEC148)) that are needed for MLFQS in
     exercise 3.1.
 
 Then you can add full support for priority scheduling in Exercise 2.1 by
@@ -242,19 +212,7 @@ primitives.
 
 Then you can tackle either Exercise 3.1 first or Exercise 2.2 first.
 
-[]{#Project 1 Requirements}
-
-------------------------------------------------------------------------
-
-[]{#SEC34}
-
 ## Project 1 Requirements
-
-[]{#Project 1 Design Document}
-
-------------------------------------------------------------------------
-
-[]{#SEC35}
 
 ### 0. Design Document
 
@@ -265,36 +223,23 @@ read the design document template before you start working on the
 project. See section [D. Project Documentation](pintos/pintos_10.html#SEC153),
 for a sample design document that goes along with a fictitious project.
 
-[]{#Alarm Clock}
-
-------------------------------------------------------------------------
-
-[]{#SEC36}
-
 ### 1. Alarm Clock
 
-#### Exercise 1.1 {#exercise-1.1 .exercise-hdr}
-
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 1.1**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Exercise 1.1</div>
+  <div class='content' markdown='1'>
 Reimplement `timer_sleep()`, defined in "`devices/timer.c`". Although a
 working implementation is provided, it \"busy waits,\" that is, it spins
 in a loop checking the current time and calling `thread_yield()` until
 enough time has gone by. Reimplement it to avoid busy waiting.
-:::
-:::
+  </div>
+</div>
 
-[]{#IDX1}
-
-[Function:]{.underline} void **timer_sleep** (int64_t `ticks`{.variable})
+<span style='text-decoration: underline;'>Function:</span> void **timer_sleep** (int64\_t `ticks`)
 
 :   Suspends execution of the calling thread until time has advanced by
-    at least `x`{.variable} timer ticks. Unless the system is otherwise
-    idle, the thread need not wake up after exactly `x`{.variable}
+    at least given number of timer ticks. Unless the system is otherwise
+    idle, the thread need not wake up after exactly the specified number of
     ticks. Just put it on the ready queue after they have waited for the
     right amount of time.
 
@@ -315,15 +260,12 @@ call `timer_sleep()` automatically when necessary. You do not need to
 modify them.
 
 If your delays seem too short or too long, reread the explanation of the
-"`-r`{.sample}" option to `pintos` (see section [1.1.4 Debugging versus
+"`-r`" option to `pintos` (see section [1.1.4 Debugging versus
 Testing](pintos/pintos_1.html#SEC6)).
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint**
-:::
-
-::: panel-body
+<div class='admonition tip'>
+  <div class='title'>Hint</div>
+  <div class='content' markdown='1'>
 You may find `struct list` and the provided functions to be useful for
 this exercise. Read the comments in `lib/kernel/list.h` carefully, since
 this list design/usage is different from the typical linked list you are
@@ -331,15 +273,12 @@ familiar with (actually, Linux kernel [uses a similar
 design](https://0xax.gitbooks.io/linux-insides/content/DataStructures/linux-datastructures-1.html)).
 Searching the Pintos codebase to see how `struct list` is used may also
 give you some inspirations.
-:::
-:::
+  </div>
+</div>
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint**
-:::
-
-::: panel-body
+<div class='admonition tip'>
+  <div class='title'>Hint</div>
+  <div class='content' markdown='1'>
 Instead of directly manipulating a thread\'s status, you may want to
 leverage some synchronization primitive that provides some sort of
 thread *\"waiting\"* functionality, e.g., semaphore. These primitives
@@ -352,32 +291,23 @@ In addition, when modifying some global variable, e.g., a global list,
 you will need to use some synchronization primitive as well to ensure it
 is not modified or read concurrently (e.g., a timer interrupt occurs
 during the modification and we switch to run another thread).
-:::
-:::
+  </div>
+</div>
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint**
-:::
-
-::: panel-body
+<div class='admonition tip'>
+  <div class='title'>Tip</div>
+  <div class='content' markdown='1'>
 You need to decide where to check whether the elapsed time exceeded the
 sleep time. The original `timer_sleep` implementation calls
 `timer_ticks`, which returns the current `ticks`. Check where the static
 `ticks` variable is *updated*. You can search with `grep` or use
 `cscope` to help you find this out: type `make cscope`, then type
 `cscope -d`, in the `Find this C symbol:` type `ticks`.
-:::
-:::
+  </div>
+</div>
 
 The alarm clock implementation is *not* needed for later projects,
 although it could be useful for project 4.
-
-[]{#Priority Scheduling}
-
-------------------------------------------------------------------------
-
-[]{#SEC37}
 
 ### 2. Priority Scheduling
 
@@ -389,6 +319,10 @@ although it could be useful for project 4.
 :::
 
 ::: panel-body
+
+<div class='admonition exercise'>
+  <div class='title'>Exercise 2.1</div>
+  <div class='content' markdown='1'>
 Implement priority scheduling in Pintos. When a thread is added to the
 ready list that has a higher priority than the currently running thread,
 the current thread should immediately yield the processor to the new
@@ -397,8 +331,8 @@ condition variable, the highest priority waiting thread should be
 awakened first. A thread may raise or lower its own priority at any
 time, but lowering its priority such that it no longer has the highest
 priority must cause it to immediately yield the CPU.
-:::
-:::
+  </div>
+</div>
 
 Thread priorities range from `PRI_MIN` (0) to `PRI_MAX` (63). Lower
 numbers correspond to lower priorities, so that priority 0 is the lowest
@@ -407,20 +341,17 @@ passed as an argument to `thread_create()`. If there\'s no reason to
 choose another priority, use `PRI_DEFAULT` (31). The `PRI_` macros are
 defined in "`threads/thread.h`", and you should not change their values.
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint**
-:::
-
-::: panel-body
+<div class='admonition tip'>
+  <div class='title'>Hint</div>
+  <div class='content' markdown='1'>
 For this exercise, you need to consider all the scenarios where the
 priority must be enforced. For example, when an alarm clock for a thread
 fires off, that thread should be made ready again, which entails a
 priority check. You can find some of these scenarios by looking for
 places that modify `ready_list` (directly and indirectly, `cscope` can
 be helpful).
-:::
-:::
+  </div>
+</div>
 
 ::: {.panel .panel-success}
 ::: panel-heading
@@ -440,15 +371,15 @@ function is used.
 :::
 
 One issue with priority scheduling is \"priority inversion\". Consider
-high, medium, and low priority threads `H`{.variable}, `M`{.variable},
-and `L`{.variable}, respectively. If `H`{.variable} needs to wait for
-`L`{.variable} (for instance, for a lock held by `L`{.variable}), and
-`M`{.variable} is on the ready list, then `H`{.variable} will never get
+high, medium, and low priority threads `H`, `M`,
+and `L`, respectively. If `H` needs to wait for
+`L` (for instance, for a lock held by `L`), and
+`M` is on the ready list, then `H` will never get
 the CPU because the low priority thread will not get any CPU time. A
-partial fix for this problem is for `H`{.variable} to \"donate\" its
-priority to `L`{.variable} while `L`{.variable} is holding the lock,
-then recall the donation once `L`{.variable} releases (and thus
-`H`{.variable} acquires) the lock.
+partial fix for this problem is for `H` to \"donate\" its
+priority to `L` while `L` is holding the lock,
+then recall the donation once `L` releases (and thus
+`H` acquires) the lock.
 
 #### Exercise 2.2 {#exercise-2.2 .exercise-hdr}
 
@@ -473,10 +404,10 @@ donations, in which multiple priorities are donated to a single thread.
 :::
 
 ::: panel-body
-Support nested priority donation: if `H`{.variable} is waiting on a lock
-that `M`{.variable} holds and `M`{.variable} is waiting on a lock that
-`L`{.variable} holds, then both `M`{.variable} and `L`{.variable} should
-be boosted to `H`{.variable}\'s priority. If necessary, you may impose a
+Support nested priority donation: if `H` is waiting on a lock
+that `M` holds and `M` is waiting on a lock that
+`L` holds, then both `M` and `L` should
+be boosted to `H`\'s priority. If necessary, you may impose a
 reasonable limit on depth of nested priority donation, such as 8 levels.
 :::
 :::
@@ -501,8 +432,8 @@ modify its own priority. Skeletons for these functions are provided in
 
 []{#IDX2}
 
-[Function:]{.underline} void **thread_set_priority** (int `new_priority`{.variable})
-:   Sets the current thread\'s priority to `new_priority`{.variable}. If
+[Function:]{.underline} void **thread_set_priority** (int `new_priority`)
+:   Sets the current thread\'s priority to `new_priority`. If
     the current thread no longer has the highest priority, yields.
 
 []{#IDX3}
@@ -548,13 +479,13 @@ start work on the advanced scheduler.
 You must write your code to allow us to choose a scheduling algorithm
 policy at Pintos startup time. By default, the priority scheduler must
 be active, but we must be able to choose the 4.4BSD scheduler with the
-"`-mlfqs`{.sample}" kernel option. Passing this option sets
+"`-mlfqs`" kernel option. Passing this option sets
 `thread_mlfqs`, declared in "`threads/thread.h`", to true when the
 options are parsed by `parse_options()`, which happens early in
 `main()`.
 
 When the 4.4BSD scheduler is enabled, threads no longer directly control
-their own priorities. The `priority`{.variable} argument to
+their own priorities. The `priority` argument to
 `thread_create()` should be ignored, as well as any calls to
 `thread_set_priority()`, and `thread_get_priority()` should return the
 thread\'s current priority as set by the scheduler.
@@ -674,7 +605,7 @@ leaking your late tokens.]{style="text-decoration: underline;"}
 
 :   []{#Adding Source Files} To add a "`.c`" file, edit the top-level
     "`Makefile.build`". Add the new file to variable
-    "`dir`{.variable}`_SRC`{.sample}", where `dir`{.variable} is the
+    "`dir``_SRC`", where `dir` is the
     directory where you added the file. For this project, that means you
     should add it to `threads_SRC` or `devices_SRC`. Then run `make`. If
     your new file doesn\'t get compiled, run `make clean` and then try
@@ -836,22 +767,22 @@ leaking your late tokens.]{style="text-decoration: underline;"}
 
 :   Priority donation only changes the priority of the donee thread. The
     donor thread\'s priority is unchanged. Priority donation is not
-    additive: if thread `A`{.variable} (with priority 5) donates to
-    thread `B`{.variable} (with priority 3), then `B`{.variable}\'s new
+    additive: if thread `A` (with priority 5) donates to
+    thread `B` (with priority 3), then `B`\'s new
     priority is 5, not 8.
 
 **Can a thread\'s priority change while it is on the ready queue?**
 
-:   Yes. Consider a ready, low-priority thread `L`{.variable} that holds
-    a lock. High-priority thread `H`{.variable} attempts to acquire the
+:   Yes. Consider a ready, low-priority thread `L` that holds
+    a lock. High-priority thread `H` attempts to acquire the
     lock and blocks, thereby donating its priority to ready thread
-    `L`{.variable}.
+    `L`.
 
 **Can a thread\'s priority change while it is blocked?**
 
-:   Yes. While a thread that has acquired lock `L`{.variable} is blocked
+:   Yes. While a thread that has acquired lock `L` is blocked
     for any reason, its priority can increase by priority donation if a
-    higher-priority thread attempts to acquire `L`{.variable}. This case
+    higher-priority thread attempts to acquire `L`. This case
     is checked by the `priority-donate-sema` test.
 
 **Can a thread added to the ready list preempt the processor?**

@@ -212,7 +212,7 @@ document template](real.tmpl) into your source tree under the name
 
 ### 1. Booting Pintos
 
-Read the [1. Introduction](pintos_1.html#SEC1) section to get an
+Read the [1. Introduction](pintos/pintos_1.html#SEC1) section to get an
 overview of Pintos. Have Pintos development environment setup as
 described in [Project Setup](setup.html). Afterwards, execute
 
@@ -277,8 +277,8 @@ each in both the terminal and the GUI window. Put the screenshots under
 
 While you are working on the projects, you will frequently use the GNU
 Debugger (GDB) to help you find bugs in your code. Make sure you read
-the [E.5 GDB](pintos_11.html#SEC162) section first. In addition, if you
-are unfamiliar with x86 assembly, the [PCASM](pintos_14.html#PCASM) is
+the [E.5 GDB](pintos/pintos_11.html#SEC162) section first. In addition, if you
+are unfamiliar with x86 assembly, the [PCASM](pintos/pintos_14.html#PCASM) is
 an excellent book to start. Note that you don\'t need to read the entire
 book, just the basic ones are enough.
 
