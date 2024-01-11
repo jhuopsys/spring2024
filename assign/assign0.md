@@ -216,12 +216,6 @@ Read the [1. Introduction](pintos_1.html#SEC1) section to get an
 overview of Pintos. Have Pintos development environment setup as
 described in [Project Setup](setup.html). Afterwards, execute
 
-<!--
-<div class='shell'><pre>
-<span class='line'><span class='inner'>cd pintos/src/threads</span></span>
-<span class='line'><span class='inner'>make qemu</span></span>
-</pre></div>
--->
 <div class='shell'><pre>
 cd pintos/src/threads
 make qemu
@@ -234,29 +228,20 @@ window of QEMU will also pop up printing the same messages. If you are
 remotely connecting to a machine, e.g., the lab machines of the CS
 department, you probably will encounter this error:
 
-+-----------------------------------+-----------------------------------+
-|                                   | ::: {.                            |
-|                                   | language-bash .highlighter-rouge} |
-|                                   | ``` highlight                     |
-|                                   | Unable to init server: Coul       |
-|                                   | d not connect: Connection refused |
-|                                   | gtk initialization failed         |
-|                                   | ```                               |
-|                                   | :::                               |
-+-----------------------------------+-----------------------------------+
+```
+Unable to init server: Could not connect: Connection refused
+gtk initialization failed
+```
 
 You need to figure out how to resolve this error and make the QEMU
 window appear.
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint**
-:::
-
-::: panel-body
-An option in `ssh` may be useful; check `man ssh`.
-:::
-:::
+<div class='admonition tip'>
+  <div class='title'>Tip</div>
+  <div class='content'>
+   <p>An option in <code>ssh</code> may be useful; check <code>man ssh</code>.</p>
+  </div>
+</div>
 
 Note that to quit the Pintos interface, for the QEMU window, you can
 just close it; for the terminal, you need to press `Ctrl-a x` to exit
