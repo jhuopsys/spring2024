@@ -1,9 +1,9 @@
 // Global object for CSF data and functions
-csf = {
+os = {
 	onLoad: function() {
-		if (csf.pageCategory) {
+		if (os.pageCategory) {
 			console.log("Found page category");
-			activeLink = document.getElementById("navbar_" + csf.pageCategory);
+			activeLink = document.getElementById("navbar_" + os.pageCategory);
 			if (activeLink) {
 				console.log("Found active link");
 				activeLink.classList.add("active");

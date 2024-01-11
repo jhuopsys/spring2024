@@ -52,24 +52,24 @@ tr:nth-child(even) {
 }
 
 /*
-#navbar li span.csf {
+#navbar li span.os {
 	color: red;
 }
 */
 
-span.csf {
+span.os {
 	color: #1f386b;
 	font-weight: bold;
 }
 
-#navbar li, span.csf {
+#navbar li, span.os {
 	float: left;
 	padding: 0;
 	border: 0;
 	margin: 0;
 }
 
-#navbar li a, span.csf {
+#navbar li a, span.os {
 	display: inline-block;
 	text-decoration: none;
 	margin: 0;
