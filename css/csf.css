@@ -128,7 +128,7 @@ code.cmd {
 }
 */
 
-div.highlighter-rouge {
+div.highlighter-rouge, div.shell {
 	margin-left: 2em;
 	margin-right: 2em;
 	background-color: #eee;
@@ -136,6 +136,15 @@ div.highlighter-rouge {
 	padding: 0 1em;
 	border-radius: .25em;
   overflow: auto;
+}
+
+/* Styling for lines in shell examples */
+div.shell pre span.line::before {
+  content: '$ ';
+}
+
+div.shell pre span.line span.inner {
+  font-weight: bold;
 }
 
 code.highlighter-rouge {
