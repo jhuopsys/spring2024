@@ -8,7 +8,7 @@ Acknowledgment: this assignment was developed by
 for the [Fall 2022 offering of OS](https://www.cs.jhu.edu/~huang/cs318/fall22/),
 and is used by permission.
 
-# Project 0: Getting Real
+# Assignment 0: Getting Real
 
 **Due:** TBD
 
@@ -202,9 +202,9 @@ mode and paging (details omitted for now). The final step is to call
 into the C code of the Pintos kernel, which from here on will be the
 main content we will deal with.
 
-## Project 0 Requirements
+## Assignment 0 Requirements
 
-### 0. Project 0 Design Document
+### 0. Assignment 0 Design Document
 
 Before you turn in your project, you must copy [the project 0 design
 document template](real.tmpl) into your source tree under the name
@@ -237,7 +237,7 @@ You need to figure out how to resolve this error and make the QEMU
 window appear.
 
 <div class='admonition tip'>
-  <div class='title'>Tip</div>
+  <div class='title'>Hint</div>
   <div class='content'>
    <p>An option in <code>ssh</code> may be useful; check <code>man ssh</code>.</p>
   </div>
@@ -252,41 +252,26 @@ Makefile target to allow you to run Pintos just in the terminal:
 
 While by default we run Pintos in QEMU, Pintos can also run in the
 [Bochs](http://bochs.sourceforge.net) and VMWare Player emulator. Bochs
-will be useful for the [Project 1: Threads](project1.html). To run
+will be useful for the [Assignment 1: Threads](assign01.html). To run
 Pintos with Bochs,
 
-+-----------------------------------+-----------------------------------+
-|                                   | ::: {.                            |
-|                                   | language-bash .highlighter-rouge} |
-|                                   | ``` highlight                     |
-|                                   | $ cd pintos/src/threads           |
-|                                   | $ make                            |
-|                                   | $ cd build                        |
-|                                   | $                                 |
-|                                   |  pintos --bochs -- run alarm-zero |
-|                                   | ```                               |
-|                                   | :::                               |
-+-----------------------------------+-----------------------------------+
+<div class='shell'>
+cd pintos/src/threads
+make 
+cd build
+pintos --bochs -- run alarm-zero
+</div>
 
-#### Exercise 0.1 {#exercise-0.1 .exercise-hdr}
-
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 0.1**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Exercise 0.1</div>
+  <div class='content'>
+   <p>
 Take screenshots of the successful booting of Pintos in QEMU and Bochs,
 each in both the terminal and the GUI window. Put the screenshots under
-"`pintos/src/p0`".
-:::
-:::
-
-[]{#Debugging}
-
-------------------------------------------------------------------------
-
-[]{#SEC23}
+"<code>pintos/src/p0</code>".
+   </p>
+  </div>
+</div>
 
 ### 2. Debugging
 
@@ -297,24 +282,23 @@ are unfamiliar with x86 assembly, the [PCASM](pintos_14.html#PCASM) is
 an excellent book to start. Note that you don\'t need to read the entire
 book, just the basic ones are enough.
 
-#### Exercise 0.2.1 {#exercise-0.2.1 .exercise-hdr}
-
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 0.2.1**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Exercise 0.2.1</div>
+  <div class='content'>
+<p>
 Your first task in this section is to use GDB to trace the QEMU BIOS a
 bit to understand how an IA-32 compatible computer boots. Answer the
 following questions in your design document:
+</p>
 
--   What is the first instruction that gets executed?
--   At which physical address is this instruction located?
--   Can you guess why the first instruction is like this?
--   What are the next three instructions?
-:::
-:::
+<ul>
+<li>   What is the first instruction that gets executed?</li>
+<li>   At which physical address is this instruction located?</li>
+<li>   Can you guess why the first instruction is like this?</li>
+<li>   What are the next three instructions?</li>
+</ul>
+  </div>
+</div>
 
 In the second task, you will be tracing the Pintos bootloader. Set a
 breakpoint at address `0x7c00`, which is where the boot sector will be
@@ -325,26 +309,25 @@ the `x/i` command in GDB to disassemble sequences of instructions in the
 boot loader, and compare the original boot loader source code with both
 the disassembly in "`threads/build/loader.asm`" and GDB.
 
-#### Exercise 0.2.2 {#exercise-0.2.2 .exercise-hdr}
-
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 0.2.2**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Exercise 0.2.2</div>
+  <div class='content'>
+<p>
 Trace the Pintos bootloader and answer the following questions in your
 design document:
+</p>
 
--   How does the bootloader read disk sectors? In particular, what BIOS
-    interrupt is used?
--   How does the bootloader decides whether it successfully finds the
-    Pintos kernel?
--   What happens when the bootloader could not find the Pintos kernel?
--   At what point and how exactly does the bootloader transfer control
-    to the Pintos kernel?
-:::
-:::
+<ul>
+<li>   How does the bootloader read disk sectors? In particular, what BIOS
+  interrupt is used?</li>
+<li>   How does the bootloader decides whether it successfully finds the
+  Pintos kernel?</li>
+<li>   What happens when the bootloader could not find the Pintos kernel?</li>
+<li>   At what point and how exactly does the bootloader transfer control
+  to the Pintos kernel?</li>
+</ul>
+  </div>
+</div>
 
 After the Pintos kernel take control, the initial setup is done in
 assembly code "`threads/start.S`". Later on, the kernel will finally
@@ -356,50 +339,38 @@ source code of `pintos_init()` function.
 Suppose we are interested in tracing the behavior of one kernel function
 `palloc_get_page()` and one global variable`uint32_t *init_page_dir`.
 For this exercise, you do not need to understand their meaning and the
-terminology used in them. You will get to know them better in [Project
-3: Virtual Memory](project3.html).
+terminology used in them. You will get to know them better in [Assignment
+3: Virtual Memory](assign03.html).
 
-#### Exercise 0.2.3 {#exercise-0.2.3 .exercise-hdr}
+<div class='admonition exercise'>
+  <div class='title'>Exercise 0.2.3</div>
+  <div class='content'>
+  <p>
+Trace the Pintos kernel and answer the following questions in your design document:
+  </p>
 
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 0.2.3**
-:::
+ <ul>
+   <li>At the entry of <code>pintos&#95;init()</code>, what is the value of expression <code>init&#95;page&#95;dir[pd&#95;no(ptov(0))]</code> in hexadecimal format?</li>
+   <li>When <code>palloc&#95;get&#95;page()</code> is called for the first time,
+   what does the call stack look like?
+   what is the return value in hexadecimal format?
+   what is the value of expression <code>init&#95;page&#95;dir[pd&#95;no(ptov(0))]</code> in hexadecimal format?</li>
+   <li>When <code>palloc&#95;get&#95;page()</code> is called for the third time,
+   what does the call stack look like?
+   what is the return value in hexadecimal format?
+   what is the value of expression <code>init&#95;page&#95;dir[pd&#95;no(ptov(0))]</code> in hexadecimal format?</li>
+ </ul>
+  </div>
+</div>
 
-::: panel-body
-Trace the Pintos kernel and answer the following questions in your
-design document:
-
--   At the entry of `pintos_init()`, what is the value of expression
-    `init_page_dir[pd_no(ptov(0))]` in hexadecimal format?
--   When `palloc_get_page()` is called for the first time,
-    -   what does the call stack look like?
-    -   what is the return value in hexadecimal format?
-    -   what is the value of expression `init_page_dir[pd_no(ptov(0))]`
-        in hexadecimal format?
--   When `palloc_get_page()` is called for the third time,
-    -   what does the call stack look like?
-    -   what is the return value in hexadecimal format?
-    -   what is the value of expression `init_page_dir[pd_no(ptov(0))]`
-        in hexadecimal format?
-:::
-:::
-
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint**
-:::
-
-::: panel-body
-You will want to use GDB commands instead of printf for this exercise.
-:::
-:::
-
-[]{#Kernel Monitor}
-
-------------------------------------------------------------------------
-
-[]{#SEC24}
+<div class='admonition tip'>
+  <div class='title'>Hint</div>
+  <div class='content'>
+  <p>
+  You will want to use GDB commands instead of <code>printf</code> for this exercise. 
+  </p>
+  </div>
+</div>
 
 ### 3. Kernel Monitor
 
@@ -413,7 +384,7 @@ pintos perl script and is not passed as part of command line arguments
 to the kernel), the kernel will simply finish up. This is a little
 boring.
 
-You task is to add a tiny kernel shell to Pintos so that when no command
+Your task is to add a tiny kernel shell to Pintos so that when no command
 line argument is passed, it will run this shell interactively. Note that
 this is a kernel-level shell. In later projects, you will be enhancing
 the user program and file system parts of Pintos, at which point you
@@ -430,158 +401,119 @@ print `invalid command`. Handling special input such as backspace is not
 required. If you implement such an enhancement, mention this in your
 design document (C.3).
 
-#### Exercise 0.3 {#exercise-0.3 .exercise-hdr}
+<div class='admonition exercise'>
+  <div class='title'>Exercise 0.3</div>
+  <div class='content'>
+<p>
+Enhance "<code>threads/init.c</code>" to implement a tiny kernel monitor
+in Pintos. Feel free to add new source files in to the Pintos code base
+for this task, e.g., provide a <code>readline</code> library function. Refer to
+<a href="assign01.html#how-do-i-update-the-makefiles-when-i-add-a-new-source-file">Adding
+Source Files</a> for how to do so.
 
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 0.3**
-:::
+</p>
+  </div>
+</div>
 
-::: panel-body
-Enhance "`threads/init.c`" to implement a tiny kernel monitor in Pintos.
-Feel free to add new source files in to the Pintos code base for this
-task, e.g., provide a `readline` library function. Refer to [Adding
-Source Files](pintos_3.html#Adding%20Source%20Files) for how to do so.
-:::
-:::
+<div class='admonition tip'>
+  <div class='title'>Hint</div>
+  <div class='content'>
+  <p>
+    The code place for you to add this feature is in line 136 of
+    "<code>threads/init.c</code>" with <code>// TODO: no command line passed to kernel. Run
+    interactively.</code>
+  </p>
+  </div>
+</div>
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint**
-:::
-
-::: panel-body
-The code place for you to add this feature is in line `136` of
-"`threads/init.c`" with
-`// TODO: no command line passed to kernel. Run interactively`.
-:::
-:::
-
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint**
-:::
-
-::: panel-body
-You may need to use some functions provided in "`lib/kernel/console.c`",
-"`lib/stdio.c`" and "`devices/input.c`".
-:::
-:::
-
-[]{#Project 0 Submission}
-
-------------------------------------------------------------------------
-
-[]{#SEC20}
+<div class='admonition tip'>
+  <div class='title'>Hint</div>
+  <div class='content'>
+  <p>
+   You may need to use some functions provided in "<code>lib/kernel/console.c</code>",
+   "<code>lib/stdio.c</code>" and "<code>devices/input.c</code>". 
+  </p>
+  </div>
+</div>
 
 ## Submission
 
-::: {.panel .panel-warning}
-::: panel-heading
-[]{.glyphicon .glyphicon-hand-right}  **Instruction**
-:::
-
-::: panel-body
-To hand in your submission for this lab, first `cd` to the root of your
+To hand in your submission for this assignment, first `cd` to the root of your
 pintos source code repository. Commit all the changes you have made for
 this lab (with `git add` and `git commit` command). Then archive the
 entire repository with
 `git archive --prefix=lab0/ --format=tar HEAD | gzip > lab0-handin.tar.gz`.
 Double check the archive file contains the content you want to submit
 and then submit "`lab0-handin.tar.gz`" through
-[Canvas](https://canvas.jhu.edu) before the deadline. For later
+*submission mechanism TDB* before the deadline.
+
+<!--
+For later
 projects, we will collect group submissions through GitHub classroom.
-:::
-:::
-
-[]{#Project 0 FAQ}
-
-------------------------------------------------------------------------
-
-[]{#FAQS}
+-->
 
 ## A. FAQ
 
-[]{#Alarm Clock FAQ}
-
-------------------------------------------------------------------------
-
-[]{#SEC40}
-
 ### A.1 Kernel Monitor FAQ
 
-**I\'ve added `#include<stdlib.h>` in the source file, but why the compiler still gives me warning when using `malloc`?**
+**I\'ve added `#include <stdlib.h>` in the source file, but why the compiler still gives me warning when using `malloc`?**
 
-:   That is the typical first \"culture shock\" doing kernel
-    programming---welcome to The Matrix!
+That is the typical first \"culture shock\" doing kernel
+programming---welcome to The Matrix!
 
-    Basically, you cannot use functions like `gets` from what you would
-    use in your regular C program. Pintos make it less shocking (and
-    your life easier) by providing a set of routines that mimics common
-    standard C library functions like `printf`. But their
-    implementations are not really exactly the same because standard C
-    library works in the user mode and usually leverages syscalls to
-    implement the functions while the lib in pintos is at kernel-level.
-    Also, this is a Pintos-only choice. In other kernels or real OSes,
-    you wouldn\'t even be able to see function names like `printf`.
-    Instead, they are named differently to avoid confusion. For example,
-    in Linux kernel, to print something, you will need to use `printk`
-    because `printf` is not available in kernel.
+Basically, you cannot use functions like `gets` from what you would
+use in your regular C program. Pintos make it less shocking (and
+your life easier) by providing a set of routines that mimics common
+standard C library functions like `printf`. But their
+implementations are not really exactly the same because standard C
+library works in the user mode and usually leverages syscalls to
+implement the functions while the lib in pintos is at kernel-level.
+Also, this is a Pintos-only choice. In other kernels or real OSes,
+you wouldn\'t even be able to see function names like `printf`.
+Instead, they are named differently to avoid confusion. For example,
+in Linux kernel, to print something, you will need to use `printk`
+because `printf` is not available in kernel.
 
-    For `malloc`, it is the same story. Pintos does provide the `malloc`
-    routine. But its implementation is different from the `malloc` in
-    standard C library. It\'s just named so to make you feel more
-    comfortable. The `malloc` kernel routine is defined in
-    `threads/malloc.h`. So you will have to include it to use this
-    header file instead.
+For `malloc`, it is the same story. Pintos does provide the `malloc`
+routine. But its implementation is different from the `malloc` in
+standard C library. It\'s just named so to make you feel more
+comfortable. The `malloc` kernel routine is defined in
+`threads/malloc.h`. So you will have to include it to use this
+header file instead.
 
 **Wait, then how does the compiler know it should include the `stdlib.h` in the Pintos codebase (`pintos/src/lib`), instead of the standard one at `/usr/include/stdlib.h`?**
 
-:   Good question. A `#include<XXX.h>` directive will indeed search for
-    system headers instead of a local header file. However, as explained
-    earlier: (1) we should not use the `/usr/include/stdlib.h` because
-    later the kernel and standard C library are not operating in the
-    same level and linking them together later won\'t work; (2) we must
-    use the `pintos/src/lib/stdlib.h`. How to achieve this? The magic
-    happens in the GCC flags.
+Good question. A `#include <XXX.h>` directive will indeed search for
+system headers instead of a local header file. However, as explained
+earlier: (1) we should not use the `/usr/include/stdlib.h` because
+later the kernel and standard C library are not operating in the
+same level and linking them together later won\'t work; (2) we must
+use the `pintos/src/lib/stdlib.h`. How to achieve this? The magic
+happens in the GCC flags.
 
-    For (1), we need to use a flag called `-nostdinc` to tell GCC to not
-    use the standard C headers in its header search path. For (2), we
-    need to use the `-I/path/to/my/headers` flag to tell GCC to treat
-    `/path/to/my/headers` in its header file search path. Once both are
-    done, you can use `#include<stdlib.h>` in a pintos source file.
+For (1), we need to use a flag called `-nostdinc` to tell GCC to not
+use the standard C headers in its header search path. For (2), we
+need to use the `-I/path/to/my/headers` flag to tell GCC to treat
+`/path/to/my/headers` in its header file search path. Once both are
+done, you can use `#include<stdlib.h>` in a pintos source file.
 
-    You can find this trick is done for compiling all pintos source
-    files in the `CPPFLAGS` in `Make.config`. Again, this system header
-    include format is just the pintos author\'s attempt to make
-    programming pintos as familiar to regular C programming as possible
-    for you. You will need to be conscious that there is some good-will
-    smoke and mirror here :)
+You can find this trick is done for compiling all pintos source
+files in the `CPPFLAGS` in `Make.config`. Again, this system header
+include format is just the pintos author\'s attempt to make
+programming pintos as familiar to regular C programming as possible
+for you. You will need to be conscious that there is some good-will
+smoke and mirror here :)
 
 **I tried to use `scanf` but got a `` undefined reference to `scanf' error ``.**
 
-:   This is for the same reason explained in the `malloc` question.
-    Pintos only implements a subset of C standard library functions. You
-    can check the header files in `src/lib` to see what are these
-    available functions. If a standard function is not listed there, you
-    cannot use it (and will have to implement it yourself if you really
-    need it).
+This is for the same reason explained in the `malloc` question.
+Pintos only implements a subset of C standard library functions. You
+can check the header files in `src/lib` to see what are these
+available functions. If a standard function is not listed there, you
+cannot use it (and will have to implement it yourself if you really
+need it).
 
 ### Acknowledgment
 
 Part of this project\'s description and exercise is borrowed from the
 MIT 6.828 and Caltech CS 124 course.
-
-------------------------------------------------------------------------
-
-::: wrapper
-Ryan Huang \| Last updated 2022-12-06 14:59:13 -0500.
-:::
-:::
-
-::: col-md-2
-::: {#toc}
-:::
-:::
-:::
-:::

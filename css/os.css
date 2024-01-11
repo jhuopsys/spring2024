@@ -227,19 +227,23 @@ div.tip div.title:before, div.success div.title:before {
   content: "💡 ";
 }
 
-/* Info styling */
+/* Info/exercise styling */
 
-div.info {
+div.info, div.exercise {
   background: #e8e8ff;
   border: 2px solid #116;
 }
 
-div.info div.title {
+div.info div.title, div.exercise div.title {
   color: #116;
 }
 
 div.info div.title:before {
   content: "ℹ️ ";
+}
+
+div.exercise div.title:before {
+  content: "🚴 ";
 }
 
 /* Caution styling */
