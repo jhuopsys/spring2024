@@ -128,7 +128,7 @@ sector boundary. If the disk is bootable, the first sector is called the
 boot sector, since this is where the boot loader code resides. When the
 BIOS finds a bootable floppy or hard disk, it loads the 512-byte boot
 sector into memory at physical addresses `0x7c00` through `0x7dff`, and
-then uses a `jmp`{.highlighter-rogue} instruction to set the CS:IP to
+then uses a `jmp` instruction to set the CS:IP to
 `0000:7c00`, passing control to the boot loader.
 
 IA32 bootloaders have the unenviable position of running in
@@ -182,7 +182,7 @@ memory. This is not an elegant solution, but it is simple and effective.
 The bootloader\'s last action is to transfer control to the kernel\'s
 entry point, which is `start()` in "`threads/start.S`". The job of this
 code is to switch the CPU from legacy 16-bit \"**real mode**\" into the
-32-bit \"**protected mode**\" used by all modern 80`x`{.variable}86
+32-bit \"**protected mode**\" used by all modern 80x86
 operating systems.
 
 The kernel startup code\'s first task is actually to obtain the
@@ -300,6 +300,14 @@ following questions in your design document:
   </div>
 </div>
 
+<div class='admonition tip'>
+  <div class='title'>Tip</div>
+  <div class='content' markdown='1'>
+The `stepi` GDB command is useful for stepping to the next assembly
+language instruction.
+  </div>
+</div>
+
 In the second task, you will be tracing the Pintos bootloader. Set a
 breakpoint at address `0x7c00`, which is where the boot sector will be
 loaded. Continue execution until that breakpoint. Trace through the code
@@ -308,6 +316,13 @@ in "`threads/loader.S`", using the source code and the disassembly file
 the `x/i` command in GDB to disassemble sequences of instructions in the
 boot loader, and compare the original boot loader source code with both
 the disassembly in "`threads/build/loader.asm`" and GDB.
+
+<div class='admonition tip'>
+  <div class='title'>Tip</div>
+  <div class='content' markdown='1'>
+The command `break *0x7c00` will set a breakpoint at address `0x7c00`.
+  </div>
+</div>
 
 <div class='admonition exercise'>
   <div class='title'>Exercise 0.2.2</div>

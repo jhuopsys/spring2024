@@ -1,20 +1,32 @@
 ---
 layout: default
 title: "Assignments"
+category: assignments
 ---
 
 # Assignments
 
-This page lists assignments.
+This page lists assignments and their due dates.
 
-*Individual* assignments must be completed individually.
+**Individual** assignments must be completed individually.
 
-For *Group* assignments, you may work in a team with up to
+For **Group** assignments, you may work in a team with up to
 3 members, or do the assignment individually.
+If you work in a team with multiple members, it is expected
+that each member will contribute substantially. We reserve
+the right not to award credit for an assignment to a student who
+has not made a substantial contribution.
 
+<div class='admonition info'>
+  <div class='title'>Project setup</div>
+  <div class='content' markdown='1'>
 Please consult the [Setup Instructions](assign/setup.html) for information
 about getting started working on the assignments, including cloning
 the starter code and getting access to the required software.
+You will need to do this before you can make progress on any of
+the assignments.
+  </div>
+</div>
 
 The assignment descriptions linked below describe the tasks and
 deliverables for each assignment. Further information can

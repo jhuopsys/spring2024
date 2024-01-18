@@ -118,6 +118,15 @@ Note that you should click on the "Pre-built toolchain binaries" link
 under "Releases" on the right-hand side of the page in order to
 get access to the toolchain download files.
 
+<div class='admonition info'>
+  <div class='title'>Info</div>
+  <div class='content' markdown='1'>
+On Linux, the binaries in the prebuilt toolchain may require shared libraries
+that you don't have installed. On Ubuntu 22.04, you can install them with the command
+<div class='shell'><pre>sudo apt install libncurses5 libpython2.7</pre></div>
+  </div>
+</div>
+
 ### 2.2 Build a toolchain from source
 
 In theory you could compile the toolchain from source code.
