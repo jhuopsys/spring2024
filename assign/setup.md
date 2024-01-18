@@ -147,6 +147,16 @@ run Pintos OS. We will use two popular emulators QEMU and Bochs.
   -   For MacOS: `brew install qemu`
   -   Other: build it from [source](https://www.qemu.org/download/)
 
+<div class='admonition info'>
+  <div class='title'>Info</div>
+  <div class='content' markdown='1'>
+Recent versions of Ubuntu have a QEMU package that should work well
+for Pintos. You can install QEMU with all supported architectures
+(including x86) with the command
+<div class='shell'><pre>sudo apt install qemu-system</pre></div>
+  </div>
+</div>
+
 ### 3.2 Bochs
 
 - Bochs is slower than QEMU but provides full emulation (i.e., higher
