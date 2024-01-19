@@ -49,8 +49,8 @@ Courselore (announcements, discussion): <https://courselore.org> (You
 should receive an invite link, email me if you haven't received it)
 
 Gradescope (assignment/exam submission and grading):
-<https://www.gradescope.com> (You should be able to use "School
-Credentials" to log in using JHU SSO, email me if you are having issues)
+<https://www.gradescope.com> (see the [Gradescope Information](gradescope.html)
+page for information about how to access the course on Gradescope)
 
 Lecture recording videos will be posted on Canvas. When you log into Canvas,
 you should see EN.601.418.SP24 listed as one of your courses. On the course's
