@@ -118,16 +118,34 @@ Your course grade will be determined as follows:
 * Exams: 40%
 
 You have a total of 120 late hours to use as needed for homework
-assignments throughout the course. Each 60 minute period following an
-assignment deadline is considered to be one late hour: for example, if
-an assignment is due at 11pm on Friday, but you submit your assignment
-at 11:30pm on Friday, you have used one late hour. If you are planning
-on using more than 48 late hours on an assignment, please send a
-private message to the instructors on Courselore to let us know. Assignment
-submissions which exceed the maximum number of late hours will (generally)
-not be considered for credit.  Having said that, we understand that
-exceptional circumstances can arise.  If you are in a situation where you
-think you may need additional late hours, please notify your instructor.
+assignments throughout the course.
+If you are planning on using more than 48 late hours on an assignment, please send a
+private message to the instructors on Courselore to let us know. Note that
+there could be restrictions on late hour use on the last assignment
+of the semester. Assignment submissions which exceed the maximum number of
+late hours will (generally) not be considered for credit.  Having said that,
+we understand that exceptional circumstances can arise.  If you are in a
+situation where you think you may need additional late hours, please notify
+your instructor.
+
+## Grading scale
+
+Note that upper bounds are exclusive and lower bounds are inclusive.
+
+Average     | Letter grade
+----------- | ------------
+97 or above | A+
+93–97       | A
+90–93       | A-
+87–90       | B+
+83–87       | B
+80–83       | B-
+77–80       | C+
+73–77       | C
+70–73       | C-
+67–70       | D+
+60–67       | D
+below 60    | F
 
 ## Key Dates
 
