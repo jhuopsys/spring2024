@@ -35,4 +35,5 @@ Gradescope.
 
 ## News
 
-* **January 22** — Welcome back!
+* **January 22** — Welcome back! [Assignment 0](assign/assign00.html)
+  is due Friday, Feb 2nd by 11 pm.
