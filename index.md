@@ -25,6 +25,11 @@ The [Resources](resources.html) page has links to useful resources.
 * Courselore (ask questions here!): <https://courselore.org/>
 * Gradescope (assignment submission): <https://www.gradescope.com/>
 
+Check out the [Gradescope Information](gradescope.html) page
+for information about logging into Gradescope. (Unless you added the
+course after the semester started, you're likely already registered,
+and you can use these instructions to log in.)
+
 Please email <daveho@cs.jhu.edu> if you need to get access to Courselore or
 Gradescope.
 
