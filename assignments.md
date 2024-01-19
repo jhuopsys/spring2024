@@ -41,4 +41,4 @@ team, especially [Ben Pfaff](https://benpfaff.org/).
 
 Assignment | Type | Due
 ---------- | :--: | ---
-[Assignment 0: Getting Real](assign/assign00.html) | **Individual** | *TBD*
+[Assignment 0: Getting Real](assign/assign00.html) | **Individual** | Friday, Feb 2nd by 11 pm

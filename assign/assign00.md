@@ -3,14 +3,16 @@ layout: default
 title: "Assignment 0: Getting Real"
 ---
 
+**Due:** Friday, Feb 2nd by 11 pm
+
+This is an **Individual** assignment.
+
 Acknowledgment: this assignment was developed by
 [Prof. Ryan Huang](https://web.eecs.umich.edu/~ryanph/)
 for the [Fall 2022 offering of OS](https://www.cs.jhu.edu/~huang/cs318/fall22/),
 and is used by permission.
 
 # Assignment 0: Getting Real
-
-**Due:** TBD
 
 This assignment is set to prepare you for the later Pintos projects. It
 will walk you through what happens after a PC is powered on till when an
@@ -456,16 +458,15 @@ Source Files</a> for how to do so.
 To hand in your submission for this assignment, first `cd` to the root of your
 pintos source code repository. Commit all the changes you have made for
 this lab (with `git add` and `git commit` command). Then archive the
-entire repository with
-`git archive --prefix=lab0/ --format=tar HEAD | gzip > lab0-handin.tar.gz`.
-Double check the archive file contains the content you want to submit
-and then submit "`lab0-handin.tar.gz`" through
-*submission mechanism TDB* before the deadline.
+entire repository with the command
 
-<!--
-For later
-projects, we will collect group submissions through GitHub classroom.
--->
+<div class='shell'><pre>
+git archive --prefix=lab0/ --format=zip --output lab0-handin.zip HEAD
+</pre></div>
+
+Double check the archive file contains the content you want to submit
+(`unzip -l lab0-handin.zip`) and then submit "`lab0-handin.zip`" as
+**Assignment 0** on Gradescope.
 
 ## A. FAQ
 
