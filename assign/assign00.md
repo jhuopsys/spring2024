@@ -306,9 +306,7 @@ following questions in your design document:
   <div class='title'>Tip</div>
   <div class='content' markdown='1'>
 The `stepi` GDB command is useful for stepping to the next assembly
-language instruction. (This will step into a called function or
-BIOS routine.) The `nexti` GDB command is useful for stepping over
-the current assembly language instruction.
+language instruction.
   </div>
 </div>
 
