@@ -35,5 +35,11 @@ Gradescope.
 
 ## News
 
-* **January 22** — Welcome back! [Assignment 0](assign/assign00.html)
+* **Jan 28** — A [video demonstrating how to get started on Assignment 0
+  on the ugrad machines](https://jh.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=33980a9b-416f-41b1-9f32-b10300eacef3)
+  has been posted. In theory the same instructions should also work on the
+  grad machines. Note that you will need to create a copy of the
+  `pintos-gdb` script to work around a compatability issue.
+  (The video describes what you need to do.)
+* **Jan 22** — Welcome back! [Assignment 0](assign/assign00.html)
   is due Friday, Feb 2nd by 11 pm.
