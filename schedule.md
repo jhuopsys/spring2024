@@ -30,7 +30,7 @@ Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Topic/Slides | Reading | Assignment
 ------------------ | ------------ | ------- | ----------
 Jan 22 | [Course intro](lectures/lecture01.pdf) | [Chapter 1](http://pages.cs.wisc.edu/~remzi/OSTEP/dialogue-threeeasy.pdf), [Chapter 2](http://pages.cs.wisc.edu/~remzi/OSTEP/intro.pdf) | 
 Jan 24 | [OS architectural support](lectures/lecture02.pdf) | [Chapter 6](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf) | 
-Jan 29 | Processes | [Chapter 4](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf), [Chapter 5](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf) | 
+Jan 29 | [Processes](lectures/lecture03.pdf) | [Chapter 4](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf), [Chapter 5](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf) | 
 Jan 31 | Threads | [Chapter 26](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf), [Chapter 27](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf) | [A0](assign/assign00.html) due 2/2
 Feb 5 | Scheduling | [Chapter 7](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf), [Chapter 8](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf) | 
 Feb 7 | Synchronization | [Chapter 28](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf), [Chapter 29](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks-usage.pdf) | 
