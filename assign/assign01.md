@@ -71,7 +71,7 @@ of the thread we\'re switching to.
 Using the GDB debugger, slowly trace through a context switch to see
 what happens (see section [E.5 GDB](pintos/pintos_11.html#SEC162)). You can set
 a breakpoint on `schedule()` to start out, and then single-step from
-there.[(1)](pintos/pintos_fot.html#FOOT1){#DOCF1} Be sure to keep track of each
+there.[(1)](pintos/pintos_fot.html#FOOT1) Be sure to keep track of each
 thread\'s address and state, and what procedures are on the call stack
 for each thread. You will notice that when one thread calls
 `switch_threads()`, another thread starts running, and the first thing
