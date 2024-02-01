@@ -35,6 +35,8 @@ Gradescope.
 
 ## News
 
+* **Feb 1** — [Assignment 0](assign/assign00.html) will be submitted on Canvas
+  rather than Gradescope. See the assignment description for details.
 * **Jan 28** — A [video demonstrating how to get started on Assignment 0
   on the ugrad machines](https://jh.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=33980a9b-416f-41b1-9f32-b10300eacef3)
   has been posted. In theory the same instructions should also work on the

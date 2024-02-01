@@ -7,6 +7,9 @@ title: "Assignment 0: Getting Real"
 
 This is an **Individual** assignment.
 
+*Update 2/1*: Please upload your completed zipfile to Canvas
+rather than Gradescope.
+
 Acknowledgment: this assignment was developed by
 [Prof. Ryan Huang](https://web.eecs.umich.edu/~ryanph/)
 for the [Fall 2022 offering of OS](https://www.cs.jhu.edu/~huang/cs318/fall22/),
@@ -466,7 +469,18 @@ git archive --prefix=lab0/ --format=zip --output lab0-handin.zip HEAD
 
 Double check the archive file contains the content you want to submit
 (`unzip -l lab0-handin.zip`) and then submit "`lab0-handin.zip`" as
-**Assignment 0** on Gradescope.
+**Assignment 0** on <strike>Gradescope</strike> **Canvas**.
+
+<div class='admonition info'>
+  <div class='title'>Update</div>
+  <div class='content' markdown='1'>
+Gradescope limits the number of files that can be submitted in a zipfile,
+and this limit is exceeded by Pintos. Please upload your zipfile as
+**Assignment 0** on Canvas. (Log into My JHU, choose Apps → Education →
+Canvas, then choose "Assignments", "Assignment 0", "Start Assignment",
+"Upload File", select your `lab0-handin.zip`, then "Submit Assignment".)
+  </div>
+</div>
 
 ## A. FAQ
 
