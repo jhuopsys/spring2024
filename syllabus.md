@@ -22,11 +22,16 @@ Office hours: T/Th 1-3pm, or by arrangement, via Zoom (see Courselore for URL)
 
 Head course assistants:
 
-* TBA
+* Ishmeal Lee <imeal1@jhu.edu>
+* Max Hahn <mhahn12@jhu.edu>
 
 Course assistants:
 
-* TBA
+* Muxi Lyu <mlyu4@jhu.edu>
+* Tony Pan <jpan26@jhu.edu>
+* Wenqiao Wang <wwang178@jh.edu>
+* Lavanya Shankar <ls1@jh.edu>
+* Rishitha Kalicheti <rkalich2@jh.edu>
 
 ## Meeting
 
