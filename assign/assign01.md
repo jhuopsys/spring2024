@@ -10,7 +10,7 @@ and is used by permission.
 
 # Project 1: Threads
 
-**Due:** *TBD*
+**Due:** Friday, Feb 23rd by 11 pm
 
 In this assignment, we give you a minimally functional thread system.
 Your job is to extend the functionality of this system to gain a better
@@ -474,7 +474,7 @@ The advanced scheduler is not used in any later project.
 
 ## Submission Instruction
 
-*Submission mechanism TBD*
+*More information about how to submit the assignment will be coming soon.*
 
 <!--
 ::: {.panel .panel-warning}
