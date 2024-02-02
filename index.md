@@ -35,6 +35,9 @@ Gradescope.
 
 ## News
 
+* **Feb 2** — [Assignment 1](assign/assign01.html) is due Friday, Feb 23rd
+  by 11 pm. Note that the exact submission mechanism hasn't been fully decided
+  yet. We will update you once we have more information about this.
 * **Feb 1** — [Assignment 0](assign/assign00.html) will be submitted on Canvas
   rather than Gradescope. See the assignment description for details.
 * **Jan 28** — A [video demonstrating how to get started on Assignment 0
