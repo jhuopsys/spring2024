@@ -8,7 +8,7 @@ Feb 7,"Synchronization",,,"[Chapter 28](http://pages.cs.wisc.edu/~remzi/OSTEP/th
 Feb 12,"Semaphores and Monitors",,,"[Chapter 30](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf), [Chapter 31](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf)"
 Feb 14,"<span class='tentative'>Synchronization exercises</span>",
 Feb 19,"Deadlock",,,"[Chapter 32](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf)"
-Feb 21,"Slack day/exam review",,,,[A1](assign/assign01.html) due
+Feb 21,"Slack day/exam review",,,,[A1](assign/assign01.html) due 2/23
 Feb 26,"**Exam 1**, in class",
 Feb 28,"Virtual memory 1",,,"[Chapter 15](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf), [Chapter 16](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf),<br>[Chapter 17](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf)"
 Mar 4,"Virtual memory in PintOS",,,""
