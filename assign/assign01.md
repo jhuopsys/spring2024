@@ -190,7 +190,7 @@ confusions come from not reading them carefully.
   <div class='content' markdown='1'>
 `make check` runs all tests. If you are debugging one test, you can run
 just that test with `make tests/threads/<test_case>.result`. Read the
-[Testing](debugtest.html) part for more details.
+[Testing](pintos/debugtest.html) part for more details.
   </div>
 </div>
 
@@ -588,7 +588,7 @@ likely to cause many of the tests to fail.
 
 ### How do I run the tests?
 
-See section [Testing](debugtest.html).
+See section [Testing](pintos/debugtest.html).
 
 ### Why do I get a test failure in `pass()`?
 
