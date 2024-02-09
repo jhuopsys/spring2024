@@ -35,6 +35,9 @@ Gradescope.
 
 ## News
 
+* **Feb 9** — The first two homework problem sets (not required,
+  not graded) are available on the [Resources](resources.html) page.
+  These will be useful for preparing for Exam 1.
 * **Feb 2** — [Assignment 1](assign/assign01.html) is due Friday, Feb 23rd
   by 11 pm. Note that the exact submission mechanism hasn't been fully decided
   yet. We will update you once we have more information about this.
