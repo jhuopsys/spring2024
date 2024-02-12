@@ -34,7 +34,7 @@ Jan 29 | [Processes](lectures/lecture03.pdf) | [Chapter 4](http://pages.cs.wisc.
 Jan 31 | [Threads](lectures/lecture04.pdf) | [Chapter 26](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf), [Chapter 27](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-api.pdf) | [A0](assign/assign00.html) due 2/2
 Feb 5 | [Scheduling](lectures/lecture05.pdf) | [Chapter 7](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf), [Chapter 8](http://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-mlfq.pdf) | 
 Feb 7 | [Synchronization](lectures/lecture06.pdf) | [Chapter 28](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf), [Chapter 29](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks-usage.pdf) | 
-Feb 12 | Semaphores and Monitors | [Chapter 30](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf), [Chapter 31](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf) | 
+Feb 12 | [Semaphores and Monitors](lectures/lecture07.pdf) | [Chapter 30](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf), [Chapter 31](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf) | 
 Feb 14 | <span class='tentative'>Synchronization exercises</span> |  | 
 Feb 19 | Deadlock | [Chapter 32](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf) | 
 Feb 21 | Slack day/exam review |  | [A1](assign/assign01.html) due 2/23
