@@ -11,7 +11,7 @@ Feb 19,"Deadlock",,,"[Chapter 32](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-
 Feb 21,"Slack day/exam review",,,,[A1](assign/assign01.html) due 2/23
 Feb 26,"**Exam 1**, in class",
 Feb 28,"Virtual memory 1",,,"[Chapter 15](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf), [Chapter 16](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf),<br>[Chapter 17](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf)"
-Mar 4,"Virtual memory in PintOS",,,""
+Mar 4,"Virtual memory in Pintos",,,""
 Mar 6,"Virtual memory II",,,"[Chapter 19](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf), [Chapter 20](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-smalltables.pdf)"
 Mar 11,"Page replacement",,,"[Chapter 21](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf), [Chapter 22](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf),<br>[Chapter 23](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-vax.pdf)"
 Mar 13,"Dynamic memory allocation",,,"[Chapter 14](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-api.pdf), [Chapter 17](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf)"
@@ -26,4 +26,4 @@ Apr 15,"Log structured filesystems",,,"[Chapter 43](http://pages.cs.wisc.edu/~re
 Apr 17,"fsck and journaling",,,"[Chapter 42](http://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf)"
 Apr 22,"Virtual machines",,,"[Appendix B](http://pages.cs.wisc.edu/~remzi/OSTEP/vmm-intro.pdf)"
 Apr 24,"Slack day/exam review"
-TBD,"**Exam 3**, during scheduled<br>final exam time"
+May 9,"**Exam 3**, At 6 pm, location TBD"
