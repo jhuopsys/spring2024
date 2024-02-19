@@ -33,15 +33,15 @@ echo -e "Please note that we are not handling your credentials in any way and "
 echo -e "they are directly being requested and processed by the 'git' command.\n"
 
 if [[ $(git rev-parse --show-toplevel 2> /dev/null) != "${PWD}" ]]; then
-    echo "Oops, you don't seem to be running this in a top-level directory of a git"
-    echo "repo. Please check your current directory and try again."
+    echo "${RED}Error${NC}: You don't seem to be running this in a top-level directory"
+    echo "of a git repo. Please check your current directory and try again."
     exit 1
 fi
 
 if [[ ! -f "${DESIGN_DOC_LOC}" ]]; then
-    echo "ERROR: We couldn't find a design doc at the expected location"
-    echo "Please put your design doc at the following location and check"
-    echo "it into Github, and run this script again:"
+    echo -e "${RED}Error${NC}: We couldn't find a design doc at the expected location"
+    echo -e "Please put your design doc at the following location and check"
+    echo -e "it into Github, and run this script again:"
     printf "    ${DESIGN_DOC_LOC}\n"
     exit 1
 fi
@@ -49,32 +49,36 @@ fi
 GIT_REPO_URL=$(git config --get remote.origin.url)
 GIT_REPO=$(echo -n "${GIT_REPO_URL}" | sed -E --expression="s|.*${GITHUB_ORG}/(.*)|\1|")
 GIT_REPO=${GIT_REPO%.git}
-if [[ "${GIT_REPO}" == "" ]]; then
-    echo "Oops, we couldn't recognize your repo from the git metadata. Please report this error to the CAs."
-    echo "    Addt'l info: ORIG_LINK=${GIT_REPO_URL}"
+if [[ "${GIT_REPO}" = "" ]]; then
+    echo -e "${RED}Error${NC}: Oops, we couldn't recognize your repo from the git metadata."
+    echo -e "${YELLOW}Please report this error to the CAs.${NC}"
+    echo -e "    Addt'l info: ORIG_LINK=${GIT_REPO_URL}"
     exit 1
 fi
 
 if [[ -z $(git status -s) ]]; then
-    echo "You have uncommitted changes, please commit them before attempting to submit."
-    echo "You can also stash them if you would prefer not to submit the changes."
+    echo -e "${RED}Error${NC}: You have uncommitted changes, please commit them before"
+    echo -e "attempting to submit. You can also stash them if you would prefer not to"
+    echo -e "submit the changes."
     exit 1
 fi
 
 GIT_HEAD_COMMIT=$(git rev-parse HEAD)
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-if ! git fetch origin ${GIT_BRANCH} 2> /dev/null; then
-    echo "This branch appears to be local-only. Please push it to Github."
-    exit 1
-fi
-UNPUSHED_COMMITS=$(git rev-list FETCH_HEAD..${GIT_BRANCH} --count)
-if [[ ${UNPUSHED_COMMITS} -ne 0 ]]; then
-    echo "You have unpushed commits on this branch, please push them before attempting to submit."
+if ! git fetch origin ${GIT_BRANCH}; then
+    echo -e "${RED}Error${NC}: This branch appears to be local-only. Please push it to Github."
     exit 1
 fi
 
-echo "We will turn in the current state of the '${GIT_BRANCH}' branch for grading."
-echo "The current commit at the head of your branch is:"
+UNPUSHED_COMMITS=$(git rev-list FETCH_HEAD..${GIT_BRANCH} --count)
+if [[ ${UNPUSHED_COMMITS} -ne 0 ]]; then
+    echo -e "${RED}Error${NC}: You have unpushed commits on this branch, please push them"
+    echo -e "before attempting to submit."
+    exit 1
+fi
+
+echo -e "We will turn in the current state of the '${GIT_BRANCH}' branch for grading."
+echo -e "The current commit at the head of your branch is:"
 git -P show -s HEAD
 echo -e "Please do not overwrite this commit after making your final submission. We will consider"
 echo -e "any attempt to tamper with the commit history and files included in the history after"
@@ -90,7 +94,8 @@ echo -e "Please ensure this info is accurate to the best of your knowledge.\n"
 read -p "Please enter the base commit: " GIT_BASE_COMMIT
 GIT_BASE_COMMIT=$(printf ${GIT_BASE_COMMIT} | tr -d '\n')
 if ! git merge-base --is-ancestor "${GIT_BASE_COMMIT}" "${GIT_HEAD_COMMIT}" &> /dev/null; then
-    echo "We couldn't find that base commit, please check your commit hash and try again."
+    echo -e "${RED}Error${NC}: We couldn't find that base commit, please check your commit"
+    echo -e "hash and try again."
     exit 1
 fi
 IFS='' read -p "Please enter your group members, separated by commas: " MEMBERS
@@ -136,4 +141,4 @@ echo -e "    Creating submission zip..."
 zip -q -9 "../${SUBMISSION_FILE_NAME}" ./*
 cd ..
 rm -rf submission_staging_temp
-echo "Done! You may now submit '${SUBMISSION_FILE_NAME}' to Gradescope."
+echo -e "${GREEN}Done!${NC} You may now submit '${SUBMISSION_FILE_NAME}' to Gradescope."

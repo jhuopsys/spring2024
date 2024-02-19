@@ -517,9 +517,9 @@ your team members. Here's what it looked like when I ran the script
 (user input in **bold**):
 
 <div class='highlighter-rouge'><pre>
-Welcome to the 'OS Lab 1' submission script.
+Welcome to the 'OS Assignment 1' submission script.
 You may be asked to authenticate with git while we verify your repo.
-Please note that we are not handling your creditials in any way and 
+Please note that we are not handling your credentials in any way and
 they are directly being requested and processed by the 'git' command.
 
 From github.com:jhuopsys/pintos-spring2024
@@ -531,7 +531,7 @@ Author: David Hovemeyer <david.hovemeyer@gmail.com>
 Date:   Sun Feb 18 18:09:35 2024 -0500
 
     working on refactoring of priority wakeup
-    
+
     Specifically, in cond_signal, want to wake up the
     highest-priority waiting thread.
 Please do not overwrite this commit after making your final submission. We will consider
@@ -539,11 +539,11 @@ any attempt to tamper with the commit history and files included in the history 
 submission to be academic dishonesty.
 You can press ctrl-c now to cancel if this doesn't look right.
 
-We will now ask you to enter the base commit so we can ensure we are grading 
-the right files. This is the commit before you started working on this lab.
-You can find this info by going to github and clicking the 'history' button 
-for your repo, and scrolling until you find the first commit you made for this lab
-and copying the hash of the commit before that.
+We will now ask you to enter the base commit so we can ensure we are grading
+the right files. This is the commit before you started working on this assignment.
+You can find this info by going to github and clicking the 'history' button
+for your repo, and scrolling until you find the first commit you made for this
+assignment and copying the hash of the commit before that.
 Please ensure this info is accurate to the best of your knowledge.
 
 Please enter the base commit: <b>9c91bba</b>
