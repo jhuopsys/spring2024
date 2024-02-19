@@ -14,24 +14,34 @@
 # Configuration parameters, DO NOT CHANGE
 ###########################################
 DESIGN_DOC_LOC="src/threads/DESIGNDOC"
-ASSIGNMENT_NAME="OS Lab 1"
+ASSIGNMENT_NAME="OS Assignment 1"
 CLASS="CS418/618"
 GITHUB_ORG="jhuopsys"
 SUBMISSION_STAGING_DIR="submission_staging_temp"
 SUBMISSION_FILE_NAME="submission.zip"
-
+# colorize utilities
+RED="\033[0;31m"
+YELLOW="\033[1;33m"
+GREEN="\033[0;32m"
+NC="\033[0m"
 ###########################################
-# SCript body
+# Script body
 ###########################################
 echo -e "Welcome to the '${ASSIGNMENT_NAME}' submission script."
 echo -e "You may be asked to authenticate with git while we verify your repo."
-echo -e "Please note that we are not handling your creditials in any way and "
+echo -e "Please note that we are not handling your credentials in any way and "
 echo -e "they are directly being requested and processed by the 'git' command.\n"
+
+if [[ $(git rev-parse --show-toplevel 2> /dev/null) != "${PWD}" ]]; then
+    echo "Oops, you don't seem to be running this in a top-level directory of a git"
+    echo "repo. Please check your current directory and try again."
+    exit 1
+fi
 
 if [[ ! -f "${DESIGN_DOC_LOC}" ]]; then
     echo "ERROR: We couldn't find a design doc at the expected location"
     echo "Please put your design doc at the following location and check"
-    echo "it into github, and run this script again:"
+    echo "it into Github, and run this script again:"
     printf "    ${DESIGN_DOC_LOC}\n"
     exit 1
 fi
@@ -53,7 +63,10 @@ fi
 
 GIT_HEAD_COMMIT=$(git rev-parse HEAD)
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-git fetch origin ${GIT_BRANCH}
+if ! git fetch origin ${GIT_BRANCH} 2> /dev/null; then
+    echo "This branch appears to be local-only. Please push it to Github."
+    exit 1
+fi
 UNPUSHED_COMMITS=$(git rev-list FETCH_HEAD..${GIT_BRANCH} --count)
 if [[ ${UNPUSHED_COMMITS} -ne 0 ]]; then
     echo "You have unpushed commits on this branch, please push them before attempting to submit."
@@ -69,10 +82,10 @@ echo -e "submission to be academic dishonesty."
 echo -e "You can press ctrl-c now to cancel if this doesn't look right.\n"
 
 echo -e "We will now ask you to enter the base commit so we can ensure we are grading "
-echo -e "the right files. This is the commit before you started working on this lab."
+echo -e "the right files. This is the commit before you started working on this assignment."
 echo -e "You can find this info by going to github and clicking the 'history' button "
-echo -e "for your repo, and scrolling until you find the first commit you made for this lab"
-echo -e "and copying the hash of the commit before that."
+echo -e "for your repo, and scrolling until you find the first commit you made for this"
+echo -e "assignment and copying the hash of the commit before that."
 echo -e "Please ensure this info is accurate to the best of your knowledge.\n"
 read -p "Please enter the base commit: " GIT_BASE_COMMIT
 GIT_BASE_COMMIT=$(printf ${GIT_BASE_COMMIT} | tr -d '\n')
