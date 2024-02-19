@@ -36,7 +36,7 @@ Feb 5 | [Scheduling](lectures/lecture05.pdf) | [Chapter 7](http://pages.cs.wisc.
 Feb 7 | [Synchronization](lectures/lecture06.pdf) | [Chapter 28](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks.pdf), [Chapter 29](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-locks-usage.pdf) | 
 Feb 12 | [Semaphores and Monitors](lectures/lecture07.pdf) | [Chapter 30](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf), [Chapter 31](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-sema.pdf) | 
 Feb 14 | [Synchronization exercises](lectures/lecture08.pdf) |  | 
-Feb 19 | Deadlock | [Chapter 32](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf) | 
+Feb 19 | [Deadlock](lectures/lecture09.pdf) | [Chapter 32](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf) | 
 Feb 21 | Slack day/exam review |  | [A1](assign/assign01.html) due 2/23
 Feb 26 | **Exam 1**, in class |  | 
 Feb 28 | Virtual memory 1 | [Chapter 15](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf), [Chapter 16](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf),<br>[Chapter 17](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf) | 
