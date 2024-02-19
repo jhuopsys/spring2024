@@ -472,9 +472,106 @@ if your implementation there can be optimized.
 
 The advanced scheduler is not used in any later project.
 
-## Submission Instruction
+## Submission Instructions
 
-*More information about how to submit the assignment will be coming soon.*
+Please follow the following instructions *carefully* to submit your work.
+
+Start by committing and pushing your work to your team's Github repository.
+When you run the command
+
+<div class='highlighter-rouge shell'><pre>
+git status -s
+</pre></div>
+
+you should see **no** output.
+
+Go to the webpage for your team's Github repository. Click on the link
+that reads "<i>N</i> commits":
+
+<div class="content-image" markdown="1">
+![Github repository web page](img/github_page.png)
+</div>
+
+Locate the earliest commit that was part of your work on Assignment 1.
+Copy its commit hash (which will be a string of hexadecimal digits.)
+In my repository, the hash of the first Assignment 1 commit was `9c91bba`.
+This is your "base commit".
+
+Next, change directory to the root directory of your repository.
+This directory should contain a file `README.md` and a directory
+called `src`.
+
+From the root directory of your repository, run the following commands:
+
+<div class='highlighter-rouge shell'><pre>
+curl -O https://jhuopsys.github.io/spring2024/assign/create_submission_a1.zip
+chmod a+x create_submission_a1.sh
+./create_submission_a1.sh
+</pre></div>
+
+(Note that in the `curl` command, "`-O`" has a capital letter "O", not the
+digit zero.)
+
+You will be prompted for the hash of your base commit and the names of
+your team members. Here's what it looked like when I ran the script
+(user input in **bold**):
+
+<div class='highlighter-rouge'><pre>
+Welcome to the 'OS Lab 1' submission script.
+You may be asked to authenticate with git while we verify your repo.
+Please note that we are not handling your creditials in any way and 
+they are directly being requested and processed by the 'git' command.
+
+From github.com:jhuopsys/pintos-spring2024
+ * branch            priority-donation-2 -> FETCH_HEAD
+We will turn in the current state of the 'priority-donation-2' branch for grading.
+The current commit at the head of your branch is:
+commit 1e3de5734b99c7d6eaaf2269f6250336478e2f27 (HEAD -> priority-donation-2, origin/priority-donation-2)
+Author: David Hovemeyer <david.hovemeyer@gmail.com>
+Date:   Sun Feb 18 18:09:35 2024 -0500
+
+    working on refactoring of priority wakeup
+    
+    Specifically, in cond_signal, want to wake up the
+    highest-priority waiting thread.
+Please do not overwrite this commit after making your final submission. We will consider
+any attempt to tamper with the commit history and files included in the history after
+submission to be academic dishonesty.
+You can press ctrl-c now to cancel if this doesn't look right.
+
+We will now ask you to enter the base commit so we can ensure we are grading 
+the right files. This is the commit before you started working on this lab.
+You can find this info by going to github and clicking the 'history' button 
+for your repo, and scrolling until you find the first commit you made for this lab
+and copying the hash of the commit before that.
+Please ensure this info is accurate to the best of your knowledge.
+
+Please enter the base commit: <b>9c91bba</b>
+Please enter your group members, separated by commas: <b>David Hovemeyer</b>
+
+Please wait, we are packaging your submission...
+    Creating submission zip...
+Done! You may now submit 'submission.zip' to Gradescope.
+</pre></div>
+
+Assuming everything went well, you should now have a file called "`submission.zip`"
+in the root directory of your repo. Upload this zipfile to Gradescope
+as **Assignment 1**.
+
+<div class='admonition info'>
+  <div class='title'>Note</div>
+  <div class='content' markdown='1'>
+   The zipfile you upload to Gradescope doesn't contain any of
+   your actual code. It just contains your completed design document
+   and a "manifest" file with information about which range of commits
+   in your repo are considered part of your submission.
+
+   **Important**: If you are not using your "official" team Github
+   repo (under the "`jhuopsys`" organization), we will not be able to
+   access your code. Please contact us ASAP if you do not have your
+   official repo yet.
+  </div>
+</div>
 
 <!--
 ::: {.panel .panel-warning}

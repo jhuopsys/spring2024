@@ -14,19 +14,25 @@
 # Configuration parameters, DO NOT CHANGE
 ###########################################
 DESIGN_DOC_LOC="src/threads/DESIGNDOC"
-ASSIGNMENT_NAME="OS Lab 1"
+ASSIGNMENT_NAME="OS Assignment 1"
 CLASS="CS418/618"
 GITHUB_ORG="jhuopsys"
 SUBMISSION_STAGING_DIR="submission_staging_temp"
 SUBMISSION_FILE_NAME="submission.zip"
 
 ###########################################
-# SCript body
+# Script body
 ###########################################
 echo -e "Welcome to the '${ASSIGNMENT_NAME}' submission script."
 echo -e "You may be asked to authenticate with git while we verify your repo."
 echo -e "Please note that we are not handling your creditials in any way and "
 echo -e "they are directly being requested and processed by the 'git' command.\n"
+
+if [[ $(git rev-parse --show-toplevel 2> /dev/null) != "${PWD}" ]]; then
+    echo "Oops, you don't seem to be running this in a top-level directory of a git"
+    echo "repo. Please check your current directory and try again."
+    exit 1
+fi
 
 if [[ ! -f "${DESIGN_DOC_LOC}" ]]; then
     echo "ERROR: We couldn't find a design doc at the expected location"
@@ -53,7 +59,10 @@ fi
 
 GIT_HEAD_COMMIT=$(git rev-parse HEAD)
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-git fetch origin ${GIT_BRANCH}
+if ! git fetch origin ${GIT_BRANCH} 2> /dev/null; then
+    echo "This branch appears to be local-only. Please push it to Github."
+    exit 1
+fi
 UNPUSHED_COMMITS=$(git rev-list FETCH_HEAD..${GIT_BRANCH} --count)
 if [[ ${UNPUSHED_COMMITS} -ne 0 ]]; then
     echo "You have unpushed commits on this branch, please push them before attempting to submit."

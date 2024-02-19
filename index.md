@@ -35,6 +35,8 @@ Gradescope.
 
 ## News
 
+* **Feb 19** — [Assignment 1](assign/assign01.html) has been updated with
+  submission instructions.
 * **Feb 9** — The first two homework problem sets (not required,
   not graded) are available on the [Resources](resources.html) page.
   These will be useful for preparing for Exam 1.
