@@ -504,7 +504,7 @@ called `src`.
 From the root directory of your repository, run the following commands:
 
 <div class='highlighter-rouge shell'><pre>
-curl -O https://jhuopsys.github.io/spring2024/assign/create_submission_a1.zip
+curl -O https://jhuopsys.github.io/spring2024/assign/create_submission_a1.sh
 chmod a+x create_submission_a1.sh
 ./create_submission_a1.sh
 </pre></div>
