@@ -492,10 +492,11 @@ that reads "<i>N</i> commits":
 ![Github repository web page](img/github_page.png)
 </div>
 
-Locate the earliest commit that was part of your work on Assignment 1.
-Copy its commit hash (which will be a string of hexadecimal digits.)
-In my repository, the hash of the first Assignment 1 commit was `9c91bba`.
-This is your "base commit".
+Locate the earliest commit that was part of your work on Assignment 1, then
+look back exactly one commit. Copy its commit hash (which will be a string of
+hexadecimal digits), this is your "base commit". For example, in my repository,
+the hash of the first Assignment 1 commit was `9c91bba`, and the hash of the
+commit before it was `95383a1`, so `95383a1` was my "base commit".
 
 Next, change directory to the root directory of your repository.
 This directory should contain a file `README.md` and a directory
@@ -546,7 +547,7 @@ for your repo, and scrolling until you find the first commit you made for this
 assignment and copying the hash of the commit before that.
 Please ensure this info is accurate to the best of your knowledge.
 
-Please enter the base commit: <b>9c91bba</b>
+Please enter the base commit: <b>95383a1</b>
 Please enter your group members, separated by commas: <b>David Hovemeyer</b>
 
 Please wait, we are packaging your submission...
