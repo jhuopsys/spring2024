@@ -47,7 +47,7 @@ if [[ ! -f "${DESIGN_DOC_LOC}" ]]; then
 fi
 
 GIT_REPO_URL=$(git config --get remote.origin.url)
-GIT_REPO=$(echo -n "${GIT_REPO_URL}" | sed -E --expression="s|.*${GITHUB_ORG}/(.*)|\1|")
+GIT_REPO=$(echo -n "${GIT_REPO_URL}" | sed -E "s|.*${GITHUB_ORG}/(.*)|\1|")
 GIT_REPO=${GIT_REPO%.git}
 if [[ "${GIT_REPO}" = "" ]]; then
     echo -e "${RED}Error${NC}: Oops, we couldn't recognize your repo from the git metadata."
