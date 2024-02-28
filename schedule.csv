@@ -10,7 +10,7 @@ Feb 14,"Synchronization exercises",lectures/lecture08.pdf
 Feb 19,"Deadlock",lectures/lecture09.pdf,,"[Chapter 32](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf)"
 Feb 21,"Slack day/exam review",,,,[A1](assign/assign01.html) due 2/23
 Feb 26,"**Exam 1**, in class",
-Feb 28,"Virtual memory 1",,,"[Chapter 15](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf), [Chapter 16](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf),<br>[Chapter 17](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf)"
+Feb 28,"Virtual memory 1",lectures/lecture10.pdf,,"[Chapter 15](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-mechanism.pdf), [Chapter 16](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf),<br>[Chapter 17](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf)"
 Mar 4,"Virtual memory in Pintos",,,""
 Mar 6,"Virtual memory II",,,"[Chapter 19](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf), [Chapter 20](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-smalltables.pdf)"
 Mar 11,"Page replacement",,,"[Chapter 21](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf), [Chapter 22](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf),<br>[Chapter 23](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-vax.pdf)"
