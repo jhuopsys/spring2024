@@ -3,9 +3,17 @@ layout: default
 title: "Assignment 2: User Programs"
 ---
 
+Acknowledgment: this assignment was developed by
+[Prof. Ryan Huang](https://web.eecs.umich.edu/~ryanph/)
+for the [Fall 2022 offering of OS](https://www.cs.jhu.edu/~huang/cs318/fall22/),
+and is used by permission.
+
 # Assignment 2: User Programs
 
-**Due:** [Friday 10/21 11:59 pm EDT]{.text-danger}
+**Due:**
+
+* "Soft" deadline **Friday, March 15th**
+* "Hard" deadline **Monday, March 25th**
 
 Now that you\'ve worked with Pintos and are becoming familiar with its
 infrastructure and thread package, it\'s time to start working on the
@@ -32,17 +40,14 @@ called `lab2-handin`.
     `master` branch with the \"Initial commit\" by the
     \"github-classroom\[bot\]\". Copy the id (SHA) for that commit,
     which is something like 5c8a731. You can then create the new branch
-    with `git checkout -b lab2-handin COMMIT_ID`, replacing the
-    COMMIT_ID with the id you copied.
+    with
+    ```
+    git checkout -b lab2-handin COMMIT_ID
+    ````
+    replacing the `COMMIT_ID` with the id you copied.
 
 You might find it useful to go back and reread how to run the tests (see
 section [Testing](debugtest.html)).
-
-[]{#Project 2 Background}
-
-------------------------------------------------------------------------
-
-[]{#SEC44}
 
 ## Background
 
@@ -67,12 +72,6 @@ that the user program interface meets the specifications described here,
 but given that constraint you are free to restructure or rewrite kernel
 code however you wish.
 
-[]{#Project 2 Source Files}
-
-------------------------------------------------------------------------
-
-[]{#SEC45}
-
 ### B.1 Source Files
 
 The easiest way to get an overview of the programming you will be doing
@@ -92,10 +91,10 @@ work will be:
 :   
 
 "`pagedir.h`"
-:   A simple manager for 80`x`{.variable}86 hardware page tables.
+:   A simple manager for 80x86 hardware page tables.
     Although you probably won\'t want to modify this code for this
     project, you may want to call some of its functions. See section
-    [5.1.2.3 Page Tables](pintos_5.html#SEC70), for more information.
+    [5.1.2.3 Page Tables](pintos/pintos_5.html#SEC70), for more information.
 
 "`syscall.c`"
 
@@ -115,7 +114,7 @@ work will be:
 "`exception.h`"
 :   When a user process performs a privileged or prohibited operation,
     it traps into the kernel as an \"exception\" or
-    \"fault.\"[(2)](pintos_fot.html#FOOT2){#DOCF2} These files handle
+    ["fault.\"](pintos/pintos_fot.html#FOOT2) These files handle
     exceptions. Currently all exceptions simply print a message and
     terminate the process. Some, but not all, solutions to project 2
     require modifying `page_fault()` in this file.
@@ -125,7 +124,7 @@ work will be:
 :   
 
 "`gdt.h`"
-:   The 80`x`{.variable}86 is a segmented architecture. The Global
+:   The 80x86 is a segmented architecture. The Global
     Descriptor Table (GDT) is a table that describes the segments in
     use. These files set up the GDT. You should not need to modify these
     files for any of the projects. You can read the code if you\'re
@@ -136,18 +135,12 @@ work will be:
 :   
 
 "`tss.h`"
-:   The Task-State Segment (TSS) is used for 80`x`{.variable}86
+:   The Task-State Segment (TSS) is used for 80x86
     architectural task switching. Pintos uses the TSS only for switching
     stacks when a user process enters an interrupt handler, as does
     Linux. You should not need to modify these files for any of the
     projects. You can read the code if you\'re interested in how the TSS
     works.
-
-[]{#Using the File System}
-
-------------------------------------------------------------------------
-
-[]{#SEC46}
 
 ### B.2 Using the File System
 
@@ -190,7 +183,7 @@ One important feature is included:
     if a file is open when it is removed, its blocks are not deallocated
     and it may still be accessed by any threads that have it open, until
     the last one closes it. See [Removing an Open
-    File](pintos_4.html#Removing%20an%20Open%20File), for more
+    File](pintos/pintos_4.html#Removing%20an%20Open%20File), for more
     information.
 
 You need to be able to create a simulated disk with a file system
@@ -199,21 +192,21 @@ the "`userprog/build`" directory, execute
 `pintos-mkdisk filesys.dsk --filesys-size=2`. This command creates a
 simulated disk named "`filesys.dsk`" that contains a 2 MB Pintos file
 system partition. Then format the file system partition by passing
-"`-f -q`{.sample}" on the kernel\'s command line: `pintos -- -f -q`. The
-"`-f`{.sample}" option causes the file system to be formatted, and
-"`-q`{.sample}" causes Pintos to exit as soon as the format is done.
+"`-f -q`" on the kernel\'s command line: `pintos -- -f -q`. The
+"`-f`" option causes the file system to be formatted, and
+"`-q`" causes Pintos to exit as soon as the format is done.
 
 You\'ll need a way to copy files in and out of the simulated file
-system. The `pintos` "`-p`{.sample}" (\"put\") and "`-g`{.sample}"
-(\"get\") options do this. To copy "`file`{.variable}" into the Pintos
-file system, use the command `pintos -p ``file`{.variable}` -- -q`. (The
-"`--`{.sample}" is needed because "`-p`{.sample}" is for the `pintos`
+system. The `pintos` "`-p`" (\"put\") and "`-g`"
+(\"get\") options do this. To copy "`file`" into the Pintos
+file system, use the command `pintos -p ``file`` -- -q`. (The
+"`--`" is needed because "`-p`" is for the `pintos`
 script, not for the simulated kernel.) To copy it to the Pintos file
-system under the name "`newname`{.variable}", add
-"`-a `{.sample}`newname`{.variable}":
-`pintos -p ``file`{.variable}` -a ``newname`{.variable}` -- -q`. The
+system under the name "`newname`", add
+"`-a ``newname`":
+`pintos -p ``file`` -a ``newname`` -- -q`. The
 commands for copying files out of a VM are similar, but substitute
-"`-g`{.sample}" for "`-p`{.sample}".
+"`-g`" for "`-p`".
 
 Incidentally, these commands work by passing special commands `extract`
 and `append` on the kernel\'s command line and copying to and from a
@@ -228,48 +221,36 @@ until you implemented it.) It assumes that you\'ve already built the
 examples in "`examples`" and that the current directory is
 "`userprog/build`":
 
-::: {.language-bash .highlighter-rouge}
-``` highlight
-$ pintos-mkdisk filesys.dsk --filesys-size=2
-$ pintos -- -f -q
-$ pintos -p ../../examples/echo -a echo -- -q
-$ pintos -- -q run 'echo cs318'
-```
-:::
+<div class='highlighter-rouge shell'><pre>
+pintos-mkdisk filesys.dsk --filesys-size=2
+pintos -- -f -q
+pintos -p ../../examples/echo -a echo -- -q
+pintos -- -q run 'echo cs318'
+</pre></div>
 
 The three final steps can actually be combined into a single command:
 
-::: {.language-bash .highlighter-rouge}
-``` highlight
+<div class='highlighter-rouge shell'><pre>
 $ pintos-mkdisk filesys.dsk --filesys-size=2
 $ pintos -p ../../examples/echo -a echo -- -f -q run 'echo cs318'
-```
-:::
+</pre></div>
 
 If you don\'t want to keep the file system disk around for later use or
 inspection, you can even combine all four steps into a single command.
-The `--filesys-size=``n`{.variable} option creates a temporary file
-system partition approximately `n`{.variable} megabytes in size just for
+The `--filesys-size=``n` option creates a temporary file
+system partition approximately `n` megabytes in size just for
 the duration of the `pintos` run. The Pintos automatic test suite makes
 extensive use of this syntax:
 
-::: {.language-bash .highlighter-rouge}
-``` highlight
+<div class='highlighter-rouge shell'><pre>
 $ pintos --filesys-size=2 -p ../../examples/echo -a echo -- -f -q run 'echo cs318'
-```
-:::
+</pre></div>
 
 You can delete a file from the Pintos file system using the
-`rm ``file`{.variable} kernel action, e.g.
-`pintos -q rm ``file`{.variable}. Also, `ls` lists the files in the file
-system and `cat ``file`{.variable} prints a file\'s contents to the
+`rm ``file` kernel action, e.g.
+`pintos -q rm ``file`. Also, `ls` lists the files in the file
+system and `cat ``file` prints a file\'s contents to the
 display.
-
-[]{#How User Programs Work}
-
-------------------------------------------------------------------------
-
-[]{#SEC47}
 
 ### B.3 How User Programs Work
 
@@ -289,7 +270,7 @@ Pintos can load *ELF* executables with the loader provided for you in
 "`userprog/process.c`". ELF is a file format used by Linux, Solaris, and
 many other operating systems for object files, shared libraries, and
 executables. You can actually use any compiler and linker that output
-80`x`{.variable}86 ELF executables to produce programs for Pintos.
+80x86 ELF executables to produce programs for Pintos.
 (We\'ve provided compilers and linkers that should do just fine.)
 
 You should realize immediately that, until you copy a test program to
@@ -299,12 +280,6 @@ programs to the file system. You might want to create a clean reference
 file system disk and copy that over whenever you trash your
 "`filesys.dsk`" beyond a useful state, which may happen occasionally
 while debugging.
-
-[]{#Virtual Memory Layout}
-
-------------------------------------------------------------------------
-
-[]{#SEC48}
 
 ### B.4 Virtual Memory Layout
 
@@ -337,74 +312,41 @@ a user process is running, the user virtual memory of the running
 process. However, even in the kernel, an attempt to access memory at an
 unmapped user virtual address will cause a page fault.
 
-[]{#Typical Memory Layout}
-
-------------------------------------------------------------------------
-
-[]{#SEC49}
-
 #### B.4.1 Typical Memory Layout
 
 Conceptually, each process is free to lay out its own user virtual
 memory however it chooses. In practice, user virtual memory is laid out
 like this:
 
-+-----------------------------------+-----------------------------------+
-|                                   |        PHYS_BASE +--              |
-|                                   | --------------------------------+ |
-|                                   |                  |                |
-|                                   |           user stack            | |
-|                                   |                  |                |
-|                                   |                |                | |
-|                                   |                  |                |
-|                                   |                |                | |
-|                                   |                  |                |
-|                                   |                V                | |
-|                                   |                  |                |
-|                                   |         grows downward          | |
-|                                   |                  |                |
-|                                   |                                 | |
-|                                   |                  |                |
-|                                   |                                 | |
-|                                   |                  |                |
-|                                   |                                 | |
-|                                   |                  |                |
-|                                   |                                 | |
-|                                   |                  |                |
-|                                   |          grows upward           | |
-|                                   |                  |                |
-|                                   |                ^                | |
-|                                   |                  |                |
-|                                   |                |                | |
-|                                   |                  |                |
-|                                   |                |                | |
-|                                   |                  +--              |
-|                                   | --------------------------------+ |
-|                                   |                  | u              |
-|                                   | ninitialized data segment (BSS) | |
-|                                   |                  +--              |
-|                                   | --------------------------------+ |
-|                                   |                  |                |
-|                                   |    initialized data segment     | |
-|                                   |                  +--              |
-|                                   | --------------------------------+ |
-|                                   |                  |                |
-|                                   |          code segment           | |
-|                                   |       0x08048000 +--              |
-|                                   | --------------------------------+ |
-|                                   |                  |                |
-|                                   |                                 | |
-|                                   |                  |                |
-|                                   |                                 | |
-|                                   |                  |                |
-|                                   |                                 | |
-|                                   |                  |                |
-|                                   |                                 | |
-|                                   |                  |                |
-|                                   |                                 | |
-|                                   |                0 +--              |
-|                                   | --------------------------------+ |
-+-----------------------------------+-----------------------------------+
+```
+   PHYS_BASE +----------------------------------+
+             |            user stack            |
+             |                 |                |
+             |                 |                |
+             |                 V                |
+             |          grows downward          |
+             |                                  |
+             |                                  |
+             |                                  |
+             |                                  |
+             |           grows upward           |
+             |                 ^                |
+             |                 |                |
+             |                 |                |
+             +----------------------------------+
+             | uninitialized data segment (BSS) |
+             +----------------------------------+
+             |     initialized data segment     |
+             +----------------------------------+
+             |           code segment           |
+  0x08048000 +----------------------------------+
+             |                                  |
+             |                                  |
+             |                                  |
+             |                                  |
+             |                                  |
+           0 +----------------------------------+
+```
 
 In this project, the user stack is fixed in size, but in project 3 it
 will be allowed to grow. Traditionally, the size of the uninitialized
@@ -413,45 +355,38 @@ to implement this.
 
 The code segment in Pintos starts at user virtual address `0x08048000`,
 approximately 128 MB from the bottom of the address space. This value is
-specified in \[ [SysV-i386](pintos_14.html#SysV-i386)\] and has no deep
+specified in \[ [SysV-i386](pintos/pintos_14.html#SysV-i386)\] and has no deep
 significance.
 
 The linker sets the layout of a user program in memory, as directed by a
 \"linker script\" that tells it the names and locations of the various
 program segments. You can learn more about linker scripts by reading the
 \"Scripts\" chapter in the linker manual, accessible via
-"`info ld`{.sample}".
+"`info ld`".
 
 To view the layout of a particular executable, run `objdump`
-(80`x`{.variable}86) or `i386-elf-objdump` (SPARC) with the
-"`-p`{.sample}" option.
-
-[]{#Project 2 Suggested Order of Implementation}
-
-------------------------------------------------------------------------
-
-[]{#SEC51}
+(80x86) or `i386-elf-objdump` (SPARC) with the
+"`-p`" option.
 
 ## Suggested Order of Implementation
 
 We suggest first implementing the following, which can happen in
 parallel:
 
--   Argument passing (see section [2. Argument
-    Passing](project2.html#SEC55)). Every user program will page fault
+-   Argument passing (see section [2. Argument Passing](assign02.html#SEC55)). Every user program will page fault
     immediately until argument passing is implemented.
 
     For now, you may simply wish to change
 
-    +-----------------------------------+-----------------------------------+
-    |                                   |     *esp = PHYS_BASE;             |
-    +-----------------------------------+-----------------------------------+
+    ```
+    *esp = PHYS_BASE;
+    ```
 
     to
 
-    +-----------------------------------+-----------------------------------+
-    |                                   |     *esp = PHYS_BASE - 12;        |
-    +-----------------------------------+-----------------------------------+
+    ```
+    *esp = PHYS_BASE - 12;
+    ```
 
     in `setup_stack()`. That will work for any test program that
     doesn\'t examine its arguments, although its name will be printed as
@@ -462,12 +397,10 @@ parallel:
     to a program will include those arguments in the name of the
     program, which will probably fail.
 
--   User memory access (see section [3. Accessing User
-    Memory](project2.html#SEC50)). All system calls need to read user
+-   User memory access (see section [3. Accessing User Memory](assign02.html#SEC50)). All system calls need to read user
     memory. Few system calls need to write to user memory.
 
--   System call infrastructure (see section [4. System
-    Calls](project2.html#SEC56)). Implement enough code to read the
+-   System call infrastructure (see section [4. System Calls](assign02.html#SEC56)). Implement enough code to read the
     system call number from the user stack and dispatch to a handler
     based on it.
 
@@ -490,19 +423,7 @@ At the very least, they can write to the console and exit correctly. You
 can then refine your implementation so that some of the tests start to
 pass.
 
-[]{#Project 2 Requirements}
-
-------------------------------------------------------------------------
-
-[]{#SEC52}
-
 ## Requirements
-
-[]{#Project 2 Design Document}
-
-------------------------------------------------------------------------
-
-[]{#SEC53}
 
 ### 0 Design Document
 
@@ -510,48 +431,31 @@ Before you turn in your project, you must copy [the project 2 design
 document template](userprog.tmpl) into your source tree under the name
 "`pintos/src/userprog/DESIGNDOC`" and fill it in. We recommend that you
 read the design document template before you start working on the
-project. See section [D. Project Documentation](pintos_10.html#SEC153),
+project. See section [D. Project Documentation](pintos/pintos_10.html#SEC153),
 for a sample design document that goes along with a fictitious project.
-
-[]{#Process Termination Messages}
-
-------------------------------------------------------------------------
-
-[]{#SEC54}
 
 ### 1. Process Termination Messages
 
 Whenever a user process terminates, because it called `exit` or for any
 other reason, print the process\'s name and exit code, formatted as if
-printed by `printf ("%s: exit(%d)\n", `[`...`]{.small}`);`. The name
+printed by `printf ("%s: exit(%d)\n", `[`...`]`);`. The name
 printed should be the full name passed to `process_execute()`, omitting
 command-line arguments. Do not print these messages when a kernel thread
 that is not a user process terminates, or when the `halt` system call is
 invoked. The message is optional when a process fails to load.
 
-#### Exercise 1.1 {#exercise-1.1 .exercise-hdr}
-
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 1.1**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Exercise 1.1</div>
+  <div class='content' markdown='1'>
 Print exit message formatted as `"%s: exit(%d)\n"` with process name and
 exit status when process is terminated.
-:::
-:::
 
 Aside from this, don\'t print any other messages that Pintos as provided
 doesn\'t already print. You may find extra messages useful during
 debugging, but they will confuse the grading scripts and thus lower your
 score.
-
-[]{#Argument Passing}
-
-------------------------------------------------------------------------
-
-[]{#SEC55}
+  </div>
+</div>
 
 ### 2. Argument Passing
 
@@ -563,17 +467,12 @@ the program name, the second word is the first argument, and so on. That
 is, `process_execute("grep foo bar")` should run `grep` passing two
 arguments `foo` and `bar`.
 
-#### Exercise 2.1 {#exercise-2.1 .exercise-hdr}
-
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 2.1**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Exercise 2.1</div>
+  <div class='content' markdown='1'>
 Add argument passing support for `process_execute()`.
-:::
-:::
+  </div>
+</div>
 
 Within a command line, multiple spaces are equivalent to a single space,
 so that `process_execute("grep  foo   bar")` is equivalent to our
@@ -583,27 +482,18 @@ those that will fit in a single page (4 kB). (There is an unrelated
 limit of 128 bytes on command-line arguments that the `pintos` utility
 can pass to the kernel.)
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint**
-:::
-
-::: panel-body
+<div class='admonition info'>
+  <div class='title'>Hint</div>
+  <div class='content' markdown='1'>
 You can parse argument strings any way you like. If you\'re lost, look
 at `strtok_r()`, prototyped in "`lib/string.h`" and implemented with
 thorough comments in "`lib/string.c`". You can find more about it by
 looking at the man page (run `man strtok_r` at the prompt).
-:::
-:::
+  </div>
+</div>
 
-See section [Program Startup Details](project2.html#SEC62), for
+See section [Program Startup Details](assign02.html#SEC62), for
 information on exactly how you need to set up the stack.
-
-[]{#Accessing User Memory}
-
-------------------------------------------------------------------------
-
-[]{#SEC50}
 
 ### 3. Accessing User Memory
 
@@ -615,17 +505,12 @@ unmapped virtual memory, or a pointer to kernel virtual address space
 rejected without harm to the kernel or other running processes, by
 terminating the offending process and freeing its resources.
 
-#### Exercise 3.1 {#exercise-3.1 .exercise-hdr}
-
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 3.1**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Exercise 3.1</div>
+  <div class='content' markdown='1'>
 Support reading from and writing to user memory for system calls.
-:::
-:::
+  </div>
+</div>
 
 There are at least two reasonable ways to do this correctly. The first
 method is to verify the validity of a user-provided pointer, then
@@ -651,8 +536,7 @@ return an error code from a memory access. Therefore, for those who want
 to try the latter technique, we\'ll provide a little bit of helpful
 code:
 
-::: {.language-c .highlighter-rouge}
-``` highlight
+```c
 /* Reads a byte at user virtual address UADDR.
    UADDR must be below PHYS_BASE.
    Returns the byte value if successful, -1 if a segfault
@@ -678,73 +562,50 @@ put_user (uint8_t *udst, uint8_t byte)
   return error_code != -1;
 }
 ```
-:::
 
 Each of these functions assumes that the user address has already been
 verified to be below `PHYS_BASE`. They also assume that you\'ve modified
 `page_fault()` so that a page fault in the kernel merely sets `eax` to
 `0xffffffff` and copies its former value into `eip`.
 
-[]{#System Calls}
-
-------------------------------------------------------------------------
-
-[]{#SEC56}
-
 ### 4. System Calls
 
-#### Exercise 4.1 {#exercise-4.1 .exercise-hdr}
-
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 4.1**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Exercise 4.1</div>
+  <div class='content' markdown='1'>
 Implement the system call handler in "`userprog/syscall.c`". The
 skeleton implementation we provide \"handles\" system calls by
 terminating the process. It will need to retrieve the system call
 number, then any system call arguments, and carry out appropriate
 actions.
-:::
-:::
+  </div>
+</div>
 
-#### Exercise 4.2 {#exercise-4.2 .exercise-hdr}
-
-::: {.panel .panel-info}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Exercise 4.2**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Exercise 4.2</div>
+  <div class='content' markdown='1'>
 Implement the following system calls. The prototypes listed are those
 seen by a user program that includes "`lib/user/syscall.h`". (This
 header, and all others in "`lib/user`", are for use by user programs
 only.) System call numbers for each system call are defined in
 "`lib/syscall-nr.h`":
-:::
-:::
+  </div>
+</div>
 
-[]{#IDX4}
-
-[System Call:]{.underline} void **halt** (void)
+<u>System Call:</u> void **halt** (void)
 :   Terminates Pintos by calling `shutdown_power_off()` (declared in
     "`devices/shutdown.h`"). This should be seldom used, because you
     lose some information about possible deadlock situations, etc.
 
-[]{#IDX5}
-
-[System Call:]{.underline} void **exit** (int `status`{.variable})
-:   Terminates the current user program, returning `status`{.variable}
+<u>System Call:</u> void **exit** (int `status`)
+:   Terminates the current user program, returning `status`
     to the kernel. If the process\'s parent `wait`s for it (see below),
     this is the status that will be returned. Conventionally, a
-    `status`{.variable} of 0 indicates success and nonzero values
+    `status` of 0 indicates success and nonzero values
     indicate errors.
 
-[]{#IDX6}
-
-[System Call:]{.underline} pid_t **exec** (const char \*`cmd_line`{.variable})
-:   Runs the executable whose name is given in `cmd_line`{.variable},
+<u>System Call:</u> pid_t **exec** (const char \*`cmd_line`)
+:   Runs the executable whose name is given in `cmd_line`,
     passing any given arguments, and returns the new process\'s program
     id (pid). Must return pid -1, which otherwise should not be a valid
     pid, if the program cannot load or run for any reason. Thus, the
@@ -752,16 +613,14 @@ only.) System call numbers for each system call are defined in
     the child process successfully loaded its executable. You must use
     appropriate synchronization to ensure this.
 
-[]{#IDX7}
+<u>System Call:</u> int **wait** (pid_t `pid`)
 
-[System Call:]{.underline} int **wait** (pid_t `pid`{.variable})
-
-:   Waits for a child process `pid`{.variable} and retrieves the
+:   Waits for a child process `pid` and retrieves the
     child\'s exit status.
 
-    If `pid`{.variable} is still alive, waits until it terminates. Then,
-    returns the status that `pid`{.variable} passed to `exit`. If
-    `pid`{.variable} did not call `exit()`, but was terminated by the
+    If `pid` is still alive, waits until it terminates. Then,
+    returns the status that `pid` passed to `exit`. If
+    `pid` did not call `exit()`, but was terminated by the
     kernel (e.g. killed due to an exception), `wait(pid)` must return
     -1. It is perfectly legal for a parent process to wait for child
     processes that have already terminated by the time the parent calls
@@ -772,22 +631,22 @@ only.) System call numbers for each system call are defined in
     `wait` must fail and return -1 immediately if any of the following
     conditions is true:
 
-    -   `pid`{.variable} does not refer to a direct child of the calling
-        process. `pid`{.variable} is a direct child of the calling
+    -   `pid` does not refer to a direct child of the calling
+        process. `pid` is a direct child of the calling
         process if and only if the calling process received
-        `pid`{.variable} as a return value from a successful call to
+        `pid` as a return value from a successful call to
         `exec`.
 
-        Note that children are not inherited: if `A`{.variable} spawns
-        child `B`{.variable} and `B`{.variable} spawns child process
-        `C`{.variable}, then `A`{.variable} cannot wait for
-        `C`{.variable}, even if `B`{.variable} is dead. A call to
-        `wait(C)` by process `A`{.variable} must fail. Similarly,
+        Note that children are not inherited: if `A` spawns
+        child `B` and `B` spawns child process
+        `C`, then `A` cannot wait for
+        `C`, even if `B` is dead. A call to
+        `wait(C)` by process `A` must fail. Similarly,
         orphaned processes are not assigned to a new parent if their
         parent process exits before they do.
 
     -   The process that calls `wait` has already called `wait` on
-        `pid`{.variable}. That is, a process may wait for any given
+        `pid`. That is, a process may wait for any given
         child at most once.
 
     Processes may spawn any number of children, wait for them in any
@@ -808,25 +667,19 @@ only.) System call numbers for each system call are defined in
     Implementing this system call requires considerably more work than
     any of the rest.
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint 1**
-:::
-
-::: panel-body
+<div class='admonition info'>
+  <div class='title'>Hint 1</div>
+  <div class='content' markdown='1'>
 You need to store several pieces of execution information such as exit
 status for each process in case its parent *may* call `wait`. This
 information should be accessible to the parent process even after this
 process dies. You should consider storing it in the heap.
-:::
-:::
+  </div>
+</div>
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint 2**
-:::
-
-::: panel-body
+<div class='admonition info'>
+  <div class='title'>Hint 2</div>
+  <div class='content' markdown='1'>
 Choosing where to initialize the execution information is important
 because the new process thread may finish before `process_execute`
 returns. If some parts of the execution information are designated for
@@ -835,45 +688,38 @@ are certain the newly created thread has not finished executing yet. You
 may also want to read the `thread_create` function definition again,
 especially the last argument, which can help you pass argument from the
 parent thread to the child thread.
-:::
-:::
+  </div>
+</div>
 
-::: {.panel .panel-success}
-::: panel-heading
-[]{.glyphicon .glyphicon-info-sign}  **Hint 3**
-:::
-
-::: panel-body
+<div class='admonition info'>
+  <div class='title'>Hint 3</div>
+  <div class='content' markdown='1'>
 Choosing when and where to free the execution information is also
 important. The parent process could die before the child process and
 vice versa. You would want whichever process that dies last to free the
 information.
-:::
-:::
+  </div>
+</div>
 
-[]{#IDX8}
+<u>System Call:</u> bool **create** (const char \*`file`, unsigned `initial_size`)
 
-[System Call:]{.underline} bool **create** (const char \*`file`{.variable}, unsigned `initial_size`{.variable})
-:   Creates a new file called `file`{.variable} initially
-    `initial_size`{.variable} bytes in size. Returns true if successful,
+:   Creates a new file called `file` initially
+    `initial_size` bytes in size. Returns true if successful,
     false otherwise. Creating a new file does not open it: opening the
     new file is a separate operation which would require a `open` system
     call.
 
-[]{#IDX9}
+<u>System Call:</u> bool **remove** (const char \*`file`)
 
-[System Call:]{.underline} bool **remove** (const char \*`file`{.variable})
-:   Deletes the file called `file`{.variable}. Returns true if
+:   Deletes the file called `file`. Returns true if
     successful, false otherwise. A file may be removed regardless of
     whether it is open or closed, and removing an open file does not
     close it. See [Removing an Open
-    File](pintos_4.html#Removing%20an%20Open%20File), for details.
+    File](pintos/pintos_4.html#Removing%20an%20Open%20File), for details.
 
-[]{#IDX10}
+<u>System Call:</u> int **open** (const char \*`file`)
 
-[System Call:]{.underline} int **open** (const char \*`file`{.variable})
-
-:   Opens the file called `file`{.variable}. Returns a nonnegative
+:   Opens the file called `file`. Returns a nonnegative
     integer handle called a \"file descriptor\" (fd), or -1 if the file
     could not be opened.
 
@@ -892,27 +738,23 @@ information.
     independently in separate calls to `close` and they do not share a
     file position.
 
-[]{#IDX11}
+<u>System Call:</u> int **filesize** (int `fd`)
 
-[System Call:]{.underline} int **filesize** (int `fd`{.variable})
-:   Returns the size, in bytes, of the file open as `fd`{.variable}.
+:   Returns the size, in bytes, of the file open as `fd`.
 
-[]{#IDX12}
+<u>System Call:</u> int **read** (int `fd`, void \*`buffer`, unsigned `size`)
 
-[System Call:]{.underline} int **read** (int `fd`{.variable}, void \*`buffer`{.variable}, unsigned `size`{.variable})
-:   Reads `size`{.variable} bytes from the file open as `fd`{.variable}
-    into `buffer`{.variable}. Returns the number of bytes actually read
+:   Reads `size` bytes from the file open as `fd`
+    into `buffer`. Returns the number of bytes actually read
     (0 at end of file), or -1 if the file could not be read (due to a
     condition other than end of file). Fd 0 reads from the keyboard
     using `input_getc()`.
 
-[]{#IDX13}
+<u>System Call:</u> int **write** (int `fd`, const void \*`buffer`, unsigned `size`)
 
-[System Call:]{.underline} int **write** (int `fd`{.variable}, const void \*`buffer`{.variable}, unsigned `size`{.variable})
-
-:   Writes `size`{.variable} bytes from `buffer`{.variable} to the open
-    file `fd`{.variable}. Returns the number of bytes actually written,
-    which may be less than `size`{.variable} if some bytes could not be
+:   Writes `size` bytes from `buffer` to the open
+    file `fd`. Returns the number of bytes actually written,
+    which may be less than `size` if some bytes could not be
     written.
 
     Writing past end-of-file would normally extend the file, but file
@@ -922,19 +764,17 @@ information.
     at all.
 
     Fd 1 writes to the console. Your code to write to the console should
-    write all of `buffer`{.variable} in one call to `putbuf()`, at least
-    as long as `size`{.variable} is not bigger than a few hundred bytes.
+    write all of `buffer` in one call to `putbuf()`, at least
+    as long as `size` is not bigger than a few hundred bytes.
     (It is reasonable to break up larger buffers.) Otherwise, lines of
     text output by different processes may end up interleaved on the
     console, confusing both human readers and our grading scripts.
 
-[]{#IDX14}
-
-[System Call:]{.underline} void **seek** (int `fd`{.variable}, unsigned `position`{.variable})
+<u>System Call:</u> void **seek** (int `fd`, unsigned `position`)
 
 :   Changes the next byte to be read or written in open file
-    `fd`{.variable} to `position`{.variable}, expressed in bytes from
-    the beginning of the file. (Thus, a `position`{.variable} of 0 is
+    `fd` to `position`, expressed in bytes from
+    the beginning of the file. (Thus, a `position` of 0 is
     the file\'s start.)
 
     A seek past the current end of a file is not an error. A later read
@@ -945,17 +785,13 @@ information.
     implemented in the file system and do not require any special effort
     in system call implementation.
 
-[]{#IDX15}
-
-[System Call:]{.underline} unsigned **tell** (int `fd`{.variable})
+<u>System Call:</u> unsigned **tell** (int `fd`)
 :   Returns the position of the next byte to be read or written in open
-    file `fd`{.variable}, expressed in bytes from the beginning of the
+    file `fd`, expressed in bytes from the beginning of the
     file.
 
-[]{#IDX16}
-
-[System Call:]{.underline} void **close** (int `fd`{.variable})
-:   Closes file descriptor `fd`{.variable}. Exiting or terminating a
+<u>System Call:</u> void **close** (int `fd`)
+:   Closes file descriptor `fd`. Exiting or terminating a
     process implicitly closes all its open file descriptors, as if by
     calling this function for each one.
 
@@ -971,7 +807,7 @@ tricky: what if the user provides an invalid pointer, a pointer into
 kernel memory, or a block partially in one of those regions? You should
 handle these cases by terminating the user process. We recommend writing
 and testing this code before implementing any other system call
-functionality. See section [Accessing User Memory](project2.html#SEC50),
+functionality. See section [Accessing User Memory](assign02.html#SEC50),
 for more information.
 
 You must synchronize system calls so that any number of user processes
@@ -1000,32 +836,21 @@ If a system call is passed an invalid argument, acceptable options
 include returning an error value (for those calls that return a value),
 returning an undefined value, or terminating the process.
 
-See section [System Call Details](project2.html#SEC63), for details on
+See section [System Call Details](assign02.html#SEC63), for details on
 how system calls work.
-
-[]{#Denying Writes to Executables}
-
-------------------------------------------------------------------------
-
-[]{#SEC57}
 
 ### 5 Denying Writes to Executables
 
-#### Extra Credit {#extra-credit .exercise-hdr}
-
-::: {.panel .panel-danger}
-::: panel-heading
-[]{.glyphicon .glyphicon-edit}  **Challenge (Extra Credit)**
-:::
-
-::: panel-body
+<div class='admonition exercise'>
+  <div class='title'>Challenge (Extra Credit)</div>
+  <div class='content' markdown='1'>
 Add code to deny writes to files in use as executables. Many OSes do
 this because of the unpredictable results if a process tried to run code
 that was in the midst of being changed on disk. This is especially
 important once virtual memory is implemented in project 3, but it can\'t
 hurt even now.
-:::
-:::
+  </div>
+</div>
 
 You can use `file_deny_write()` to prevent writes to an open file.
 Calling `file_allow_write()` on the file will re-enable them (unless the
@@ -1037,53 +862,9 @@ Note: if you decide not to work on this extra credit exercise, you do
 not need to pass the `rox-simple`, `rox-child`, and `rox-multichild`
 tests.
 
-[]{#Project 2 Submission}
-
-------------------------------------------------------------------------
-
 ## Submission Instruction
 
-::: {.panel .panel-warning}
-::: panel-heading
-[]{.glyphicon .glyphicon-hand-right}  **Git Branch**
-:::
-
-::: panel-body
-We will collect your solution automatically through GitHub by taking a
-snapshot by the deadline. Thus, be sure to commit your changes and do a
-`git push` to GitHub, especially in the last few minutes! [Your
-submission must reside in a branch called `lab2-handin`]{.text-danger}.
-If you are developing in other branches, in the end, don\'t forget to
-merge changes from that branch to the `lab2-handin` branch.\
-:::
-:::
-
-Double check that your submission resides in the correct branch
-`lab2-handin` (note the middle part is a dash `-`, not underscore) by
-the deadline. Using a different branch name will result in failure to
-collect and grade your submission in time.
-
-::: {.panel .panel-warning}
-::: panel-heading
-[]{.glyphicon .glyphicon-hand-right}  **Late Hours**
-:::
-
-::: panel-body
-If you decide to use the late hour tokens, fill out [this
-form](https://forms.office.com/r/L3QaumKm4K) **before the deadline**, so
-that we won\'t be collecting and grading your solution immediately.
-**When you finish** (within the token limit), fill out [this
-form](https://forms.office.com/r/L3QaumKm4K) again to indicate you are
-done. [Don\'t forget to fill out the form for the second time to avoid
-leaking your late tokens.]{style="text-decoration: underline;"}
-:::
-:::
-
-[]{#Project 2 FAQ}
-
-------------------------------------------------------------------------
-
-[]{#SEC58}
+*Submission instructions coming soon!*
 
 ## A. FAQ
 
@@ -1099,28 +880,24 @@ How much code will I need to write?
     all the files modified by the reference solution, and some may
     modify files not modified by the reference solution.
 
-    +-----------------------------------+-----------------------------------+
-    |                                   |      threads/thread.c     |   13  |
-    |                                   |                                   |
-    |                                   |     threads/thread.h     |   26 + |
-    |                                   |      userprog/exception.c |    8  |
-    |                                   |      userprog/pr                  |
-    |                                   | ocess.c   |  247 ++++++++++++++-- |
-    |                                   |      userprog/syscall.c   |  46   |
-    |                                   | 8 ++++++++++++++++++++++++++++++- |
-    |                                   |      userprog/syscall.h   |    1  |
-    |                                   |      6 files changed, 7           |
-    |                                   | 25 insertions(+), 38 deletions(-) |
-    +-----------------------------------+-----------------------------------+
+    ```
+    threads/thread.c     |   13 
+     threads/thread.h     |   26 +
+     userprog/exception.c |    8 
+     userprog/process.c   |  247 ++++++++++++++--
+     userprog/syscall.c   |  468 ++++++++++++++++++++++++++++++-
+     userprog/syscall.h   |    1 
+     6 files changed, 725 insertions(+), 38 deletions(-)
+    ```
 
-The kernel always panics when I run `pintos -p ``file`{.variable}` -- -q`.
+The kernel always panics when I run `pintos -p ``file`` -- -q`.
 
-:   Did you format the file system (with "`pintos -- -f`{.sample}")?
+:   Did you format the file system (with "`pintos -- -f`")?
 
     Is your file name too long? The file system limits file names to 14
     characters. A command like
-    "`pintos -p ../../examples/echo -- -q`{.sample}" will exceed the
-    limit. Use "`pintos -p ../../examples/echo -a echo -- -q`{.sample}"
+    "`pintos -p ../../examples/echo -- -q`" will exceed the
+    limit. Use "`pintos -p ../../examples/echo -a echo -- -q`"
     to put the file under the name "`echo`" instead.
 
     Is the file system full?
@@ -1143,7 +920,7 @@ All my user programs die with page faults.
 
 :   This will happen if you haven\'t implemented argument passing (or
     haven\'t done so correctly). The basic C library for user programs
-    tries to read `argc`{.variable} and `argv`{.variable} off the stack.
+    tries to read `argc` and `argv` off the stack.
     If the stack isn\'t properly set up, this causes a page fault.
 
 All my user programs die with `system call!`
@@ -1152,24 +929,24 @@ All my user programs die with `system call!`
     Every reasonable program tries to make at least one system call
     (`exit()`) and most programs make more than that. Notably,
     `printf()` invokes the `write` system call. The default system call
-    handler just prints "`system call!`{.sample}" and terminates the
+    handler just prints "`system call!`" and terminates the
     program. Until then, you can use `hex_dump()` to convince yourself
     that argument passing is implemented correctly (see section [Program
-    Startup Details](project2.html#SEC62)).
+    Startup Details](assign02.html#SEC62)).
 
 How can I disassemble user programs?
 
-:   The `objdump` (80`x`{.variable}86) or `i386-elf-objdump` (SPARC)
+:   The `objdump` (80x86) or `i386-elf-objdump` (SPARC)
     utility can disassemble entire user programs or object files. Invoke
-    it as `objdump -d ``file`{.variable}. You can use GDB\'s
+    it as `objdump -d ``file`. You can use GDB\'s
     `disassemble` command to disassemble individual functions (see
-    section [E.5 GDB](pintos_11.html#SEC162)).
+    section [E.5 GDB](pintos/pintos_11.html#SEC162)).
 
 Why do many C include files not work in Pintos programs?
 
 :   
 
-Can I use lib`foo`{.variable} in my Pintos programs?
+Can I use lib`foo` in my Pintos programs?
 
 :   The C library we provide is very limited. It does not include many
     of the features that are expected of a real operating system\'s C
@@ -1190,8 +967,7 @@ How do I compile new user programs?
 
 Can I run user programs under a debugger?
 
-:   Yes, with some limitations. See section [E.5
-    GDB](pintos_11.html#SEC162).
+:   Yes, with some limitations. See section [E.5 GDB](pintos/pintos_11.html#SEC162).
 
 What\'s the difference between `tid_t` and `pid_t`?
 
@@ -1209,12 +985,6 @@ What\'s the difference between `tid_t` and `pid_t`?
     same process, or you can use a more complex mapping. It\'s up to
     you.
 
-[]{#Argument Passing FAQ}
-
-------------------------------------------------------------------------
-
-[]{#SEC59}
-
 ### A.1 Argument Passing FAQ
 
 Isn\'t the top of stack in kernel virtual memory?
@@ -1230,12 +1000,6 @@ Is `PHYS_BASE` fixed?
 :   No. You should be able to support `PHYS_BASE` values that are any
     multiple of `0x10000000` from `0x80000000` to `0xf0000000`, simply
     via recompilation.
-
-[]{#System Calls FAQ}
-
-------------------------------------------------------------------------
-
-[]{#SEC60}
 
 ### A.2 System Calls FAQ
 
@@ -1257,9 +1021,7 @@ Can I set a maximum number of open files per process?
 
 What happens when an open file is removed?
 
-:   []{#Removing an Open File}
-
-    You should implement the standard Unix semantics for files. That is,
+:   You should implement the standard Unix semantics for files. That is,
     when a file is removed any process which has a file descriptor for
     that file may continue to use that descriptor. This means that they
     can read and write from the file. The file will not have a name, and
@@ -1282,21 +1044,15 @@ What should happen if an `exec` fails midway through loading?
     the `exec` system call until it is established whether the load was
     successful or not. The child must communicate this information to
     its parent using appropriate synchronization, such as a semaphore
-    (see section [A.3.2 Semaphores](pintos_7.html#SEC113)), to ensure
+    (see section [A.3.2 Semaphores](pintos/pintos_7.html#SEC113)), to ensure
     that the information is communicated without race conditions.
 
-[]{#80x86 Calling Convention}
-
-------------------------------------------------------------------------
-
-[]{#SEC61}
-
-## 80`x`{.variable}86 Calling Convention
+## 80x86 Calling Convention
 
 This section summarizes important points of the convention used for
-normal function calls on 32-bit 80`x`{.variable}86 implementations of
+normal function calls on 32-bit 80x86 implementations of
 Unix. Some details are omitted for brevity. If you do want all the
-details, refer to \[ [SysV-i386](pintos_14.html#SysV-i386)\].
+details, refer to \[[SysV-i386](pintos/pintos_14.html#SysV-i386)\].
 
 The calling convention works like this:
 
@@ -1306,11 +1062,11 @@ The calling convention works like this:
 
     The stack grows downward: each push decrements the stack pointer,
     then stores into the location it now points to, like the C
-    expression "`*--sp = `{.sample}`value`{.variable}".
+    expression "`*--sp = ``value`".
 
-2.  The caller pushes the address of its next instruction (the *return
-    address*) on the stack and jumps to the first instruction of the
-    callee. A single 80`x`{.variable}86 instruction, `CALL`, does both.
+2.  The caller pushes the address of its next instruction (the *return address*)
+    on the stack and jumps to the first instruction of the
+    callee. A single 80x86 instruction, `CALL`, does both.
 
 3.  The callee executes. When it takes control, the stack pointer points
     to the return address, the first argument is just above it, the
@@ -1319,7 +1075,7 @@ The calling convention works like this:
 4.  If the callee has a return value, it stores it into register `EAX`.
 
 5.  The callee returns by popping the return address from the stack and
-    jumping to the location it specifies, using the 80`x`{.variable}86
+    jumping to the location it specifies, using the 80x86
     `RET` instruction.
 
 6.  The caller pops the arguments off the stack.
@@ -1329,26 +1085,14 @@ shows a sample stack frame as seen by the callee at the beginning of
 step 3 above, supposing that `f()` is invoked as `f(1, 2, 3)`. The
 initial stack address is arbitrary:
 
-+-----------------------------------+-----------------------------------+
-|                                   |                                   |
-|                                   |                +----------------+ |
-|                                   |                                   |
-|                                   |     0xbffffe7c |        3       | |
-|                                   |                                   |
-|                                   |     0xbffffe78 |        2       | |
-|                                   |                                   |
-|                                   |     0xbffffe74 |        1       | |
-|                                   |     stack pointer                 |
-|                                   | --> 0xbffffe70 | return address | |
-|                                   |                                   |
-|                                   |                +----------------+ |
-+-----------------------------------+-----------------------------------+
-
-[]{#Program Startup Details}
-
-------------------------------------------------------------------------
-
-[]{#SEC62}
+```
+                             +----------------+
+                  0xbffffe7c |        3       |
+                  0xbffffe78 |        2       |
+                  0xbffffe74 |        1       |
+stack pointer --> 0xbffffe70 | return address |
+                             +----------------+
+```
 
 ### Program Startup Details
 
@@ -1357,25 +1101,23 @@ The Pintos C library for user programs designates `_start()`, in
 function is a wrapper around `main()` that calls `exit()` if `main()`
 returns:
 
-::: {.language-c .highlighter-rouge}
-``` highlight
+```c
 void
 _start (int argc, char *argv[])
 {
   exit (main (argc, argv));
 }
 ```
-:::
 
 The kernel must put the arguments for the initial function on the stack
 before it allows the user program to begin executing. The arguments are
 passed in the same way as the normal calling convention (see section
-[80`x`{.variable}86 Calling Convention](project2.html#SEC61)).
+[80x86 Calling Convention](assign02.html#SEC61)).
 
 Consider how to handle arguments for the following example command:
-"`/bin/ls -l foo bar`{.sample}". First, break the command into words:
-"`/bin/ls`{.sample}", "`-l`{.sample}", "`foo`{.sample}",
-"`bar`{.sample}". Place the words at the top of the stack. Order
+"`/bin/ls -l foo bar`". First, break the command into words:
+"`/bin/ls`", "`-l`", "`foo`",
+"`bar`". Place the words at the top of the stack. Order
 doesn\'t matter, because they will be referenced through pointers.
 
 Then, push the address of each string plus a null pointer sentinel, on
@@ -1395,22 +1137,21 @@ The table below shows the state of the stack and the relevant registers
 right before the beginning of the user program, assuming `PHYS_BASE` is
 `0xc0000000`:
 
-  -------------- ------------------------------ ------------------------ ---------------
-  Address        Name                           Data                     Type
-  `0xbffffffc`   `argv[3][`[`...`]{.small}`]`   "`bar\0`{.sample}"       `char[4]`
-  `0xbffffff8`   `argv[2][`[`...`]{.small}`]`   "`foo\0`{.sample}"       `char[4]`
-  `0xbffffff5`   `argv[1][`[`...`]{.small}`]`   "`-l\0`{.sample}"        `char[3]`
-  `0xbfffffed`   `argv[0][`[`...`]{.small}`]`   "`/bin/ls\0`{.sample}"   `char[8]`
-  `0xbfffffec`   word-align                     0                        `uint8_t`
-  `0xbfffffe8`   `argv[4]`                      `0`                      `char *`
-  `0xbfffffe4`   `argv[3]`                      `0xbffffffc`             `char *`
-  `0xbfffffe0`   `argv[2]`                      `0xbffffff8`             `char *`
-  `0xbfffffdc`   `argv[1]`                      `0xbffffff5`             `char *`
-  `0xbfffffd8`   `argv[0]`                      `0xbfffffed`             `char *`
-  `0xbfffffd4`   `argv`                         `0xbfffffd8`             `char **`
-  `0xbfffffd0`   `argc`                         4                        `int`
-  `0xbfffffcc`   return address                 0                        `void (*) ()`
-  -------------- ------------------------------ ------------------------ ---------------
+Address       |   Name                           | Data                    |  Type
+------------- | -------------------------------- | ----------------------- | -------
+`0xbffffffc`  | `argv[3][`[`...`]`]`             | "`bar\0`"               | `char[4]`
+`0xbffffff8`  | `argv[2][`[`...`]`]`             | "`foo\0`"               | `char[4]`
+`0xbffffff5`  | `argv[1][`[`...`]`]`             | "`-l\0`"                | `char[3]`
+`0xbfffffed`  | `argv[0][`[`...`]`]`             | "`/bin/ls\0`"           | `char[8]`
+`0xbfffffec`  | word-align                       | 0                       | `uint8_t`
+`0xbfffffe8`  | `argv[4]`                        | `0`                     | `char *`
+`0xbfffffe4`  | `argv[3]`                        | `0xbffffffc`            | `char *`
+`0xbfffffe0`  | `argv[2]`                        | `0xbffffff8`            | `char *`
+`0xbfffffdc`  | `argv[1]`                        | `0xbffffff5`            | `char *`
+`0xbfffffd8`  | `argv[0]`                        | `0xbfffffed`            | `char *`
+`0xbfffffd4`  | `argv`                           | `0xbfffffd8`            | `char **`
+`0xbfffffd0`  | `argc`                           | 4                       | `int`
+`0xbfffffcc`  | return address                   | 0                       | `void (*) ()`
 
 In this example, the stack pointer would be initialized to `0xbfffffcc`.
 
@@ -1422,26 +1163,12 @@ You may find the non-standard `hex_dump()` function, declared in
 "`<stdio.h>`", useful for debugging your argument passing code. Here\'s
 what it would show in the above example:
 
-+-----------------------------------+-----------------------------------+
-|                                   |     bfffffc0                      |
-|                                   |                                   |
-|                                   |    00 00 00 00 |            ....| |
-|                                   |     bfffffd0                      |
-|                                   | 04 00 00 00 d8 ff ff bf-ed ff ff  |
-|                                   | bf f5 ff ff bf |................| |
-|                                   |     bfffffe0                      |
-|                                   | f8 ff ff bf fc ff ff bf-00 00 00  |
-|                                   | 00 00 2f 62 69 |............./bi| |
-|                                   |     bffffff0                      |
-|                                   | 6e 2f 6c 73 00 2d 6c 00-66 6f 6f  |
-|                                   | 00 62 61 72 00 |n/ls.-l.foo.bar.| |
-+-----------------------------------+-----------------------------------+
-
-[]{#System Call Details}
-
-------------------------------------------------------------------------
-
-[]{#SEC63}
+```
+bfffffc0                                      00 00 00 00 |            ....|
+bfffffd0  04 00 00 00 d8 ff ff bf-ed ff ff bf f5 ff ff bf |................|
+bfffffe0  f8 ff ff bf fc ff ff bf-00 00 00 00 00 2f 62 69 |............./bi|
+bffffff0  6e 2f 6c 73 00 2d 6c 00-66 6f 6f 00 62 61 72 00 |n/ls.-l.foo.bar.|
+```
 
 ### System Call Details
 
@@ -1449,51 +1176,37 @@ The first project already dealt with one way that the operating system
 can regain control from a user program: interrupts from timers and I/O
 devices. These are \"external\" interrupts, because they are caused by
 entities outside the CPU (see section [A.4.3 External Interrupt
-Handling](pintos_7.html#SEC121)).
+Handling](pintos/pintos_7.html#SEC121)).
 
 The operating system also deals with software exceptions, which are
 events that occur in program code (see section [A.4.2 Internal Interrupt
-Handling](pintos_7.html#SEC120)). These can be errors such as a page
+Handling](pintos/pintos_7.html#SEC120)). These can be errors such as a page
 fault or division by zero. Exceptions are also the means by which a user
 program can request services (\"system calls\") from the operating
 system.
 
-In the 80`x`{.variable}86 architecture, the "`int`{.sample}" instruction
+In the 80x86 architecture, the "`int`" instruction
 is the most commonly used means for invoking system calls. This
 instruction is handled in the same way as other software exceptions. In
-Pintos, user programs invoke "`int $0x30`{.sample}" to make a system
+Pintos, user programs invoke "`int $0x30`" to make a system
 call. The system call number and any additional arguments are expected
 to be pushed on the stack in the normal fashion before invoking the
-interrupt (see section [80`x`{.variable}86 Calling
-Convention](project2.html#SEC61)).
+interrupt (see section [80x86 Calling
+Convention](assign02.html#SEC61)).
 
 Thus, when the system call handler `syscall_handler()` gets control, the
 system call number is in the 32-bit word at the caller\'s stack pointer,
 the first argument is in the 32-bit word at the next higher address, and
 so on. The caller\'s stack pointer is accessible to `syscall_handler()`
-as the "`esp`{.sample}" member of the `struct intr_frame` passed to it.
+as the "`esp`" member of the `struct intr_frame` passed to it.
 (`struct intr_frame` is on the kernel stack.)
 
-The 80`x`{.variable}86 convention for function return values is to place
+The 80x86 convention for function return values is to place
 them in the `EAX` register. System calls that return a value can do so
-by modifying the "`eax`{.sample}" member of `struct intr_frame`.
+by modifying the "`eax`" member of `struct intr_frame`.
 
 You should try to avoid writing large amounts of repetitive code for
 implementing system calls. Each system call argument, whether an integer
 or a pointer, takes up 4 bytes on the stack. You should be able to take
 advantage of this to avoid writing much near-identical code for
 retrieving each system call\'s arguments from the stack.
-
-------------------------------------------------------------------------
-
-::: wrapper
-Ryan Huang \| Last updated 2022-12-06 14:59:13 -0500.
-:::
-:::
-
-::: col-md-2
-::: {#toc}
-:::
-:::
-:::
-:::
