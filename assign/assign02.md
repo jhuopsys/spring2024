@@ -373,7 +373,7 @@ To view the layout of a particular executable, run `objdump`
 We suggest first implementing the following, which can happen in
 parallel:
 
--   Argument passing (see section [2. Argument Passing](assign02.html#SEC55)). Every user program will page fault
+-   Argument passing (see section [2. Argument Passing](assign02.html#a1-argument-passing-faq)). Every user program will page fault
     immediately until argument passing is implemented.
 
     For now, you may simply wish to change
@@ -397,10 +397,10 @@ parallel:
     to a program will include those arguments in the name of the
     program, which will probably fail.
 
--   User memory access (see section [3. Accessing User Memory](assign02.html#SEC50)). All system calls need to read user
+-   User memory access (see section [3. Accessing User Memory](assign02.html#3-accessing-user-memory)). All system calls need to read user
     memory. Few system calls need to write to user memory.
 
--   System call infrastructure (see section [4. System Calls](assign02.html#SEC56)). Implement enough code to read the
+-   System call infrastructure (see section [4. System Calls](assign02.html#4-system-calls)). Implement enough code to read the
     system call number from the user stack and dispatch to a handler
     based on it.
 
@@ -492,7 +492,7 @@ looking at the man page (run `man strtok_r` at the prompt).
   </div>
 </div>
 
-See section [Program Startup Details](assign02.html#SEC62), for
+See section [Program Startup Details](assign02.html#program-startup-details), for
 information on exactly how you need to set up the stack.
 
 ### 3. Accessing User Memory
@@ -807,7 +807,7 @@ tricky: what if the user provides an invalid pointer, a pointer into
 kernel memory, or a block partially in one of those regions? You should
 handle these cases by terminating the user process. We recommend writing
 and testing this code before implementing any other system call
-functionality. See section [Accessing User Memory](assign02.html#SEC50),
+functionality. See section [Accessing User Memory](assign02.html#3-accessing-user-memory),
 for more information.
 
 You must synchronize system calls so that any number of user processes
@@ -836,7 +836,7 @@ If a system call is passed an invalid argument, acceptable options
 include returning an error value (for those calls that return a value),
 returning an undefined value, or terminating the process.
 
-See section [System Call Details](assign02.html#SEC63), for details on
+See section [System Call Details](assign02.html#system-call-details), for details on
 how system calls work.
 
 ### 5 Denying Writes to Executables
@@ -931,8 +931,7 @@ All my user programs die with `system call!`
     `printf()` invokes the `write` system call. The default system call
     handler just prints "`system call!`" and terminates the
     program. Until then, you can use `hex_dump()` to convince yourself
-    that argument passing is implemented correctly (see section [Program
-    Startup Details](assign02.html#SEC62)).
+    that argument passing is implemented correctly (see section [Program Startup Details](assign02.html#program-startup-details)).
 
 How can I disassemble user programs?
 
@@ -1112,7 +1111,7 @@ _start (int argc, char *argv[])
 The kernel must put the arguments for the initial function on the stack
 before it allows the user program to begin executing. The arguments are
 passed in the same way as the normal calling convention (see section
-[80x86 Calling Convention](assign02.html#SEC61)).
+[80x86 Calling Convention](assign02.html#80x86-calling-convention)).
 
 Consider how to handle arguments for the following example command:
 "`/bin/ls -l foo bar`". First, break the command into words:
@@ -1192,7 +1191,7 @@ Pintos, user programs invoke "`int $0x30`" to make a system
 call. The system call number and any additional arguments are expected
 to be pushed on the stack in the normal fashion before invoking the
 interrupt (see section [80x86 Calling
-Convention](assign02.html#SEC61)).
+Convention](assign02.html#80x86-calling-convention)).
 
 Thus, when the system call handler `syscall_handler()` gets control, the
 system call number is in the 32-bit word at the caller\'s stack pointer,
