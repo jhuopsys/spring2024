@@ -43,3 +43,4 @@ Assignment | Type | Due
 ---------- | :--: | ---
 [Assignment 0: Getting Real](assign/assign00.html) | **Individual** | Friday, Feb 2nd by 11 pm
 [Assignment 1: Threads](assign/assign01.html) | **Group** | Friday, Feb 23rd by 11 pm
+[Assignment 2: User Programs](assign/assign02.html) | **Group** | "Soft" deadline Friday, March 15th by 11 pm<br>Hard deadline Monday, March 25th by 11 pm
