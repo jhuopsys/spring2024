@@ -48,9 +48,9 @@ Mar 18–22 | **Spring break, no classes** |  |
 Mar 25 | IO and disks | [Chapter 36](http://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf), [Chapter 37](http://pages.cs.wisc.edu/~remzi/OSTEP/file-disks.pdf) | [A2](assign/assign02.html) due
 Mar 27 | File systems | [Chapter 39](http://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf) | 
 Apr 1 | File systems implementation | [Chapter 40](http://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf) | 
-Apr 3 | Slack day/exam review |  | <span class='tentative'>A3 part A due<br>Fri 4/5</span>
+Apr 3 | Slack day/exam review |  | 
 Apr 8 | **Exam 2**, in class |  | 
-Apr 10 | Unix Fast File System | [Chapter 41](http://pages.cs.wisc.edu/~remzi/OSTEP/file-ffs.pdf), [FFS paper](https://dsf.berkeley.edu/cs262/FFS.pdf) | 
+Apr 10 | Unix Fast File System | [Chapter 41](http://pages.cs.wisc.edu/~remzi/OSTEP/file-ffs.pdf), [FFS paper](https://dsf.berkeley.edu/cs262/FFS.pdf) | <span class='tentative'>A3 part A due<br>Fri 4/5</span>
 Apr 15 | Log structured filesystems | [Chapter 43](http://pages.cs.wisc.edu/~remzi/OSTEP/file-lfs.pdf), [LFS paper](https://dl.acm.org/doi/pdf/10.1145/146941.146943) | 
 Apr 17 | fsck and journaling | [Chapter 42](http://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf) | 
 Apr 22 | Virtual machines | [Appendix B](http://pages.cs.wisc.edu/~remzi/OSTEP/vmm-intro.pdf) | 
