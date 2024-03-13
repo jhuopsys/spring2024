@@ -157,7 +157,7 @@ div.shell pre span.line span.inner {
   font-weight: bold;
 }
 
-code.highlighter-rouge, .admonition code {
+code.highlighter-rouge, .admonition code, .sample {
   border: 1px solid #ccc;
   background-color: #eee;
   padding: 0 .25em;
@@ -170,6 +170,10 @@ code.highlighter-rouge, .admonition code {
   color: white;
   padding: 2px .25em;
   border-radius: .25em;
+}
+
+.text-danger {
+  color: red;
 }
 
 #footer {
