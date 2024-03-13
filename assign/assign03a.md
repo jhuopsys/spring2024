@@ -5,7 +5,7 @@ title: "Assignment 3A: Virtual Memory"
 
 # Project 3: Virtual Memory - Part A
 
-**Due:** Friday, April 5th by 11 pm
+**Due:** Friday, April 12th by 11 pm
 
 By now you should have some familiarity with the inner workings of
 Pintos. Your OS can properly handle multiple threads of execution with
