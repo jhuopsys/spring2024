@@ -35,6 +35,8 @@ Gradescope.
 
 ## News
 
+* **Mar 13** — [Assignment 2](assign/assign02.html) has been updated with submission
+  instructions.
 * **Mar 13** — [Assignment 3a](assign/assign03a.html) is due
   **Friday, April 12th**.
 * **Feb 28** — [Assignment 2](assign/assign02.html) is due **Friday, March 15th**
