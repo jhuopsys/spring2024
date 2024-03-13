@@ -29,7 +29,7 @@ System](pintos/pintos_4.html#SEC46)).
 
 You will work in the "`vm`" directory for this project. The "`vm`"
 directory contains only "`Makefile`"s. The only change from "`userprog`"
-is that this new "`Makefile`" turns on the setting "`-DVM`{.sample}".
+is that this new "`Makefile`" turns on the setting "<span class='sample' markdown='1'>-DVM</span>".
 All code you write will be in new files or in files introduced in
 earlier projects.
 
@@ -95,7 +95,7 @@ just *offset*), like this:
          Physical Address
 ```
 
-The 80`x`{.variable}86 doesn\'t provide any way to directly access
+The 80<span class='variable' markdown='1'>x</span>86 doesn\'t provide any way to directly access
 memory at a physical address. Pintos works around this by mapping kernel
 virtual memory directly to physical memory: the first page of kernel
 virtual memory is mapped to the first frame of physical memory, the
@@ -110,7 +110,7 @@ Addresses](pintos/pintos_7.html#SEC125), for details.
 
 In Pintos, a *page table* is a data structure that the CPU uses to
 translate a virtual address to a physical address, that is, from a page
-to a frame. The page table format is dictated by the 80`x`{.variable}86
+to a frame. The page table format is dictated by the 80<span class='variable' markdown='1'>x</span>86
 architecture. Pintos provides page table management code in
 "`pagedir.c`" (see section [A.7 Page Table](pintos/pintos_7.html#SEC126)).
 
@@ -182,8 +182,8 @@ deletion in the middle.
 Pintos includes a bitmap data structure in "`lib/kernel/bitmap.c`" and
 "`lib/kernel/bitmap.h`". A bitmap is an array of bits, each of which can
 be true or false. Bitmaps are typically used to track usage in a set of
-(identical) resources: if resource `n`{.variable} is in use, then bit
-`n`{.variable} of the bitmap is true. Pintos bitmaps are fixed in size,
+(identical) resources: if resource <span class='variable' markdown='1'>n</span> is in use, then bit
+<span class='variable' markdown='1'>n</span> of the bitmap is true. Pintos bitmaps are fixed in size,
 although you could extend their implementation to support resizing.
 
 Pintos also includes a hash table data structure (see section [A.8 Hash
@@ -296,7 +296,7 @@ The evicted frame may then be used to store a different page.
 
 #### B.5.1 Accessed and Dirty Bits
 
-80`x`{.variable}86 hardware provides some assistance for implementing
+80<span class='variable' markdown='1'>x</span>86 hardware provides some assistance for implementing
 page replacement algorithms, through a pair of bits in the page table
 entry (PTE) for each page. On any read or write to a page, the CPU sets
 the *accessed bit* to 1 in the page\'s PTE, and on any write, the CPU
@@ -332,12 +332,12 @@ read back or the process whose page was swapped is terminated.
 You may use the `BLOCK_SWAP` block device for swapping, obtaining the
 `struct block` that represents it by calling `block_get_role()`. From
 the "`vm/build`" directory, use the command
-`pintos-mkdisk swap.dsk --swap-size=``n`{.variable} to create an disk
-named "`swap.dsk`" that contains a `n`{.variable}-MB swap partition.
+`pintos-mkdisk swap.dsk --swap-size=`<span class='variable' markdown='1'>n</span> to create an disk
+named "`swap.dsk`" that contains a <span class='variable' markdown='1'>n</span>-MB swap partition.
 Afterward, "`swap.dsk`" will automatically be attached as an extra disk
 when you run `pintos`. Alternatively, you can tell `pintos` to use a
-temporary `n`{.variable}-MB swap disk for a single run with
-"`--swap-size=`{.sample}`n`{.variable}".
+temporary <span class='variable' markdown='1'>n</span>-MB swap disk for a single run with
+"<span class='sample' markdown='1'>--swap-size=</span><span class='variable' markdown='1'>n</span>".
 
 Swap slots should be allocated lazily, that is, only when they are
 actually required by eviction. Reading data pages from the executable
@@ -498,7 +498,7 @@ selected.
 <div class='admonition tip'>
 <div class='title'>Tip</div>
 <div class='content' markdown='1'>
-You can use the "`-ul`{.sample}" kernel command-line option to limit the
+You can use the "<span class='sample' markdown='1'>-ul</span>" kernel command-line option to limit the
 size of the user pool, which makes it easy to test your VM
 implementation with various user memory sizes. For example,
 `pintos --swap-size=2 --filesys-size=2 -p ../../examples/echo -a echo -- -ul=4 -f -q run 'echo hello world'`
