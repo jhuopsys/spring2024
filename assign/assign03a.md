@@ -350,7 +350,7 @@ Free a swap slot when its contents are read back into a frame.
 
 We suggest the following initial order of implementation:
 
-1.  Frame table (see section [B.5 Managing the Frame Table](#SEC74)).
+1.  Frame table (see section [B.5 Managing the Frame Table](#b5-managing-the-frame-table)).
     Change "`process.c`" to use your frame table allocator.
 
     Do not implement swapping yet. If you run out of frames, fail the
@@ -359,7 +359,8 @@ We suggest the following initial order of implementation:
     After this step, your kernel should still pass all the project 2
     test cases.
 
-2.  Supplemental page table and page fault handler (see section [B.4 Managing the Supplemental Page Table](#SEC73)). Change "`process.c`"
+2.  Supplemental page table and page fault handler (see section
+    [B.4 Managing the Supplemental Page Table](#b4-managing-the-supplemental-page-table)). Change "`process.c`"
     to record the necessary information in the supplemental page table
     when loading an executable and setting up its stack. Implement
     loading of code and data segments in the page fault handler. For
@@ -370,7 +371,9 @@ We suggest the following initial order of implementation:
 
     From here, you can implement page reclamation on process exit.
 
-    The next step is to implement eviction (see section [B.5 Managing the Frame Table](#SEC74)). Initially you could choose the page to evict
+    The next step is to implement eviction (see section
+    [B.5 Managing the Frame Table](#b5-managing-the-frame-table)).
+    Initially you could choose the page to evict
     randomly. At this point, you need to consider how to manage accessed and
     dirty bits and aliasing of user and kernel pages. Synchronization is
     also a concern: how do you deal with it if process A faults on a page
