@@ -35,6 +35,8 @@ Gradescope.
 
 ## News
 
+* **Mar 13** — [Assignment 3a](assign/assign03a.html) is due
+  **Friday, April 5th**.
 * **Feb 28** — [Assignment 2](assign/assign02.html) is due **Friday, March 15th**
   (soft deadline), with a hard deadline of **Monday, March 25th**.
 * **Feb 19** — [Assignment 1](assign/assign01.html) has been updated with
