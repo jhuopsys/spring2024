@@ -14,11 +14,8 @@ However, the number and size of programs that can run is limited by the
 machine\'s main memory size. In this assignment, you will remove that
 limitation.
 
-[You will build this assignment on top of the last one]{.text-danger}.
-We ask that you hand in your code for this lab in a branch called
-[`lab3a-handin`]{.text-danger}. Create this branch with
-`git checkout -b lab3a-handin lab2-handin`. Test programs from project 2
-should also work with project 3. You should take care to fix any bugs in
+<span class='text-danger'>You will build this assignment on top of the last one</span>.
+Test programs from project 2 should also work with project 3. You should take care to fix any bugs in
 your project 2 submission before you start work on project 3, because
 those bugs will most likely cause the same problems in project 3.
 
@@ -40,12 +37,10 @@ You will probably be encountering just a few files for the first time:
 
 "`devices/block.h`"
 
-:   
-
 "`devices/block.c`"
 :   Provides sector-based read and write access to block device. You
-    will use this interface to access the swap partition as a block
-    device.
+will use this interface to access the swap partition as a block
+device.
 
 ### B.2 Memory Terminology
 
@@ -65,11 +60,11 @@ the page size. Thus, a 32-bit virtual address can be divided into a
 this:
 
 ```
-               31               12 11        0
-              +-------------------+-----------+
-              |    Page Number    |   Offset  |
-              +-------------------+-----------+
-                       Virtual Address
+ 31               12 11        0
++-------------------+-----------+
+|    Page Number    |   Offset  |
++-------------------+-----------+
+         Virtual Address
 ```
 
 Each process has an independent set of *user (virtual) pages*, which are
@@ -93,11 +88,11 @@ divided into a 20-bit *frame number* and a 12-bit *frame offset* (or
 just *offset*), like this:
 
 ```
-               31               12 11        0
-              +-------------------+-----------+
-              |    Frame Number   |   Offset  |
-              +-------------------+-----------+
-                       Physical Address
+ 31               12 11        0
++-------------------+-----------+
+|    Frame Number   |   Offset  |
++-------------------+-----------+
+         Physical Address
 ```
 
 The 80`x`{.variable}86 doesn\'t provide any way to directly access
@@ -135,7 +130,6 @@ address, on the right.
   +-----------+-------+                  +------------+-------+
    Virt Addr      |                       Phys Addr       ^
                    \_____________________________________/
-
 ```
 
 #### B.2.4 Swap Slots
@@ -374,15 +368,14 @@ We suggest the following initial order of implementation:
     After this step, your kernel should pass all of the project 2
     functionality test cases, but only some of the robustness tests.
 
-From here, you can implement page reclamation on process exit.
+    From here, you can implement page reclamation on process exit.
 
-The next step is to implement eviction (see section [B.5 Managing the
-Frame Table](#SEC74)). Initially you could choose the page to evict
-randomly. At this point, you need to consider how to manage accessed and
-dirty bits and aliasing of user and kernel pages. Synchronization is
-also a concern: how do you deal with it if process A faults on a page
-whose frame process B is in the process of evicting? Finally, implement
-a eviction strategy such as the clock algorithm.
+    The next step is to implement eviction (see section [B.5 Managing the Frame Table](#SEC74)). Initially you could choose the page to evict
+    randomly. At this point, you need to consider how to manage accessed and
+    dirty bits and aliasing of user and kernel pages. Synchronization is
+    also a concern: how do you deal with it if process A faults on a page
+    whose frame process B is in the process of evicting? Finally, implement
+    a eviction strategy such as the clock algorithm.
 
 ## Requirements
 
@@ -394,8 +387,8 @@ how to handle page faults, how to organize the swap partition, how to
 implement paging, etc.
 
 <div class='admonition info'>
-  <div class='title'>Tests</div>
-  <div class='content' markdown='1'>
+<div class='title'>Tests</div>
+<div class='content' markdown='1'>
 The test Grading and Rubric files are split into to two parts for this
 assignment. The stack growth and mmap related tests (listed in
 [Rubric\_part2.functionality](https://github.com/jhu-cs318/pintos/blob/master/src/tests/vm/Rubric_part2.functionality)
@@ -403,7 +396,7 @@ and
 [Rubric\_part2.robustness](https://github.com/jhu-cs318/pintos/blob/master/src/tests/vm/Rubric_part2.robustness))
 are for project 3b. Thus, you can ignore them in project 3a. To directly
 use the Grading file for this project 3a:
-  </div>
+</div>
 </div>
 
 ### 0. Design Document
@@ -417,24 +410,24 @@ for a sample design document that goes along with a fictitious project.
 ### 1. Paging
 
 <div class='admonition exercise'>
-  <div class='title'>Exercise 1.1</div>
-  <div class='content' markdown='1'>
+<div class='title'>Exercise 1.1</div>
+<div class='content' markdown='1'>
 Implement paging for segments loaded from executables. All of these
 pages should be loaded lazily, that is, only as the kernel intercepts
 page faults for them. Upon eviction, pages modified since load (e.g. as
 indicated by the \"dirty bit\") should be written to swap. Unmodified
 pages, including read-only pages, should never be written to swap
 because they can always be read back from the executable.
-  </div>
+</div>
 </div>
 
 <div class='admonition exercise'>
-  <div class='title'>Exercise 1.2</div>
-  <div class='content' markdown='1'>
+<div class='title'>Exercise 1.2</div>
+<div class='content' markdown='1'>
 Implement a global page replacement algorithm that approximates LRU.
 Your algorithm should perform at least as well as the simple variant of
 the \"second chance\" or \"clock\" algorithm.
-  </div>
+</div>
 </div>
 
 Your design should allow for parallelism. If one page fault requires
@@ -451,18 +444,18 @@ initialize to zero following the bytes read. The two always sum to
 values:
 
 -   If `page_read_bytes` equals `PGSIZE`, the page should be demand
-    paged from the underlying file on its first access.
+paged from the underlying file on its first access.
 -   If `page_zero_bytes` equals `PGSIZE`, the page does not need to be
-    read from disk at all because it is all zeroes. You should handle
-    such pages by creating a new page consisting of all zeroes at the
-    first page fault.
+read from disk at all because it is all zeroes. You should handle
+such pages by creating a new page consisting of all zeroes at the
+first page fault.
 -   Otherwise, neither `page_read_bytes` nor `page_zero_bytes` equals
-    `PGSIZE`. In this case, an initial part of the page is to be read
-    from the underlying file and the remainder zeroed.
+`PGSIZE`. In this case, an initial part of the page is to be read
+from the underlying file and the remainder zeroed.
 
 <div class='admonition tip'>
-  <div class='title'>Hint</div>
-  <div class='content' markdown='1'>
+<div class='title'>Hint</div>
+<div class='content' markdown='1'>
 In order for demand paging to work, you need to record metadata for each
 lazily-loaded page, which allows you to know what location to read its
 content from disk later. In particular, if before demand paging a
@@ -473,49 +466,49 @@ from offset `X` of the executable file during page fault handling.
 The supplementary page table keeps track of relationship of memory pages
 and their backing store locations. You should consider filling in the
 supplementary page table in `load_segment`.
-  </div>
+</div>
 </div>
 
 <div class='admonition tip'>
-  <div class='title'>Tips</div>
-  <div class='content' markdown='1'>
+<div class='title'>Tips</div>
+<div class='content' markdown='1'>
 If you would like to retain the previous file-reading code in
 `load_segment`, you can use macros like this to select the behavior of
 `load_segment` at compilation time:
 
 ```c
 static bool load_segment(...)
-  {
-  #ifndef VM
-    file_seek (file, ofs);
-  ...
-  #else
-  ... // fill in code for demand paging behavior in lab 3.
-  #endif
-  }
+{
+#ifndef VM
+file_seek (file, ofs);
+...
+#else
+... // fill in code for demand paging behavior in lab 3.
+#endif
+}
 ```
 
 If you compile Pintos under lab 1 (`threads` directory) or lab 2
 (`userprog` directory), the `#ifndef VM` section will be selected. If
 you compile Pintos under lab 3 or lab 4, the `#else` section will be
 selected.
-  </div>
+</div>
 </div>
 
 <div class='admonition tip'>
-  <div class='title'>Tip</div>
-  <div class='content' markdown='1'>
+<div class='title'>Tip</div>
+<div class='content' markdown='1'>
 You can use the "`-ul`{.sample}" kernel command-line option to limit the
 size of the user pool, which makes it easy to test your VM
 implementation with various user memory sizes. For example,
 `pintos --swap-size=2 --filesys-size=2 -p ../../examples/echo -a echo -- -ul=4 -f -q run 'echo hello world'`
 will test Pintos with 4 page frames for user program.
-  </div>
+</div>
 </div>
 
 <div class='admonition info'>
-  <div class='title'>Debugging Tips</div>
-  <div class='content' markdown='1'>
+<div class='title'>Debugging Tips</div>
+<div class='content' markdown='1'>
 Debugging in this lab can be challenging since the root cause (bug) can
 be far away from the symptom point, sometimes even many page faults away
 that make it difficult to track it down using backtrace.
@@ -546,19 +539,18 @@ pay special attention to logic such as calculating the address, setting
 flags/enum statuses, resetting offsets, locking, etc. It may take much
 shorter time to localize the bugs compared to directly debugging the
 symptom head-on.
-  </div>
+</div>
 </div>
 
 ### 2. Accessing User Memory
 
 <div class='admonition exercise'>
-  <div class='title'>Exercise 2.1</div>
-  <div class='content' markdown='1'>
+<div class='title'>Exercise 2.1</div>
+<div class='content' markdown='1'>
 Adjust user memory access code in system call handling to deal with
 potential page faults.
-  </div>
 </div>
-#### Exercise 2.1 {#exercise-2.1 .exercise-hdr}
+</div>
 
 You will need to adapt your code to access user memory (see section 3
 [Accessing User Memory](project2.html#SEC50) in project 2) while
@@ -598,40 +590,40 @@ it is not necessary.
 **How much code will I need to write?**
 
 :   Here\'s a summary of our reference solution, produced by the
-    `diffstat` program. The final row gives total lines inserted and
-    deleted; a changed line counts as both an insertion and a deletion.
+`diffstat` program. The final row gives total lines inserted and
+deleted; a changed line counts as both an insertion and a deletion.
 
-    This summary is relative to the Pintos base code, but the reference
-    solution for project 3 starts from the reference solution to
-    project 2. See section [4.4 FAQ](pintos/pintos_4.html#SEC58), for the
-    summary of project 2.
+This summary is relative to the Pintos base code, but the reference
+solution for project 3 starts from the reference solution to
+project 2. See section [4.4 FAQ](pintos/pintos_4.html#SEC58), for the
+summary of project 2.
 
-    The reference solution represents just one possible solution. Many
-    other solutions are also possible and many of those differ greatly
-    from the reference solution. Some excellent solutions may not modify
-    all the files modified by the reference solution, and some may
-    modify files not modified by the reference solution.
+The reference solution represents just one possible solution. Many
+other solutions are also possible and many of those differ greatly
+from the reference solution. Some excellent solutions may not modify
+all the files modified by the reference solution, and some may
+modify files not modified by the reference solution.
 
-    ```
-     Makefile.build       |    4
-     devices/timer.c      |   42 ++
-     threads/init.c       |    5
-     threads/interrupt.c  |    2
-     threads/thread.c     |   31 +
-     threads/thread.h     |   37 +-
-     userprog/exception.c |   12
-     userprog/pagedir.c   |   10
-     userprog/process.c   |  319 +++++++++++++-----
-     userprog/syscall.c   |  545 ++++++++++++++++++++++++++++++-
-     userprog/syscall.h   |    1
-     vm/frame.c           |  162 +++++++++
-     vm/frame.h           |   23 +
-     vm/page.c            |  297 ++++++++++++++++
-     vm/page.h            |   50 ++
-     vm/swap.c            |   85 ++++
-     vm/swap.h            |   11
-     17 files changed, 1532 insertions(+), 104 deletions(-)
-    ```
+```
+Makefile.build       |    4
+devices/timer.c      |   42 ++
+threads/init.c       |    5
+threads/interrupt.c  |    2
+threads/thread.c     |   31 +
+threads/thread.h     |   37 +-
+userprog/exception.c |   12
+userprog/pagedir.c   |   10
+userprog/process.c   |  319 +++++++++++++-----
+userprog/syscall.c   |  545 ++++++++++++++++++++++++++++++-
+userprog/syscall.h   |    1
+vm/frame.c           |  162 +++++++++
+vm/frame.h           |   23 +
+vm/page.c            |  297 ++++++++++++++++
+vm/page.h            |   50 ++
+vm/swap.c            |   85 ++++
+vm/swap.h            |   11
+17 files changed, 1532 insertions(+), 104 deletions(-)
+```
 
 **Do we need a working Project 2 to implement Project 3?**
 
@@ -640,33 +632,33 @@ it is not necessary.
 **What extra credit is available?**
 
 :   You may implement sharing: when multiple processes are created that
-    use the same executable file, share read-only pages among those
-    processes instead of creating separate copies of read-only segments
-    for each process. If you carefully designed your data structures,
-    sharing of read-only pages should not make this part significantly
-    harder.
+use the same executable file, share read-only pages among those
+processes instead of creating separate copies of read-only segments
+for each process. If you carefully designed your data structures,
+sharing of read-only pages should not make this part significantly
+harder.
 
 **How do we resume a process after we have handled a page fault?**
 
 :   Returning from `page_fault()` resumes the current user process (see
-    section [A.4.2 Internal Interrupt Handling](pintos/pintos_7.html#SEC120)).
-    It will then retry the instruction to which the instruction pointer
-    points.
+section [A.4.2 Internal Interrupt Handling](pintos/pintos_7.html#SEC120)).
+It will then retry the instruction to which the instruction pointer
+points.
 
 **Does the virtual memory system need to support data segment growth?**
 
 :   No. The size of the data segment is determined by the linker. We
-    still have no dynamic allocation in Pintos (although it is possible
-    to \"fake\" it at the user level by using memory-mapped files).
-    Supporting data segment growth should add little additional
-    complexity to a well-designed system.
+still have no dynamic allocation in Pintos (although it is possible
+to \"fake\" it at the user level by using memory-mapped files).
+Supporting data segment growth should add little additional
+complexity to a well-designed system.
 
 **Why should I use `PAL_USER` for allocating page frames?**
 
 :   Passing `PAL_USER` to `palloc_get_page()` causes it to allocate
-    memory from the user pool, instead of the main kernel pool. Running
-    out of pages in the user pool just causes user programs to page, but
-    running out of pages in the kernel pool will cause many failures
-    because so many kernel functions need to obtain memory. You can
-    layer some other allocator on top of `palloc_get_page()` if you
-    like, but it should be the underlying mechanism.
+memory from the user pool, instead of the main kernel pool. Running
+out of pages in the user pool just causes user programs to page, but
+running out of pages in the kernel pool will cause many failures
+because so many kernel functions need to obtain memory. You can
+layer some other allocator on top of `palloc_get_page()` if you
+like, but it should be the underlying mechanism.
