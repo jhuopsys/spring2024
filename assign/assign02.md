@@ -231,8 +231,8 @@ pintos -- -q run 'echo cs318'
 The three final steps can actually be combined into a single command:
 
 <div class='highlighter-rouge shell'><pre>
-$ pintos-mkdisk filesys.dsk --filesys-size=2
-$ pintos -p ../../examples/echo -a echo -- -f -q run 'echo cs318'
+pintos-mkdisk filesys.dsk --filesys-size=2
+pintos -p ../../examples/echo -a echo -- -f -q run 'echo cs318'
 </pre></div>
 
 If you don\'t want to keep the file system disk around for later use or
@@ -243,7 +243,7 @@ the duration of the `pintos` run. The Pintos automatic test suite makes
 extensive use of this syntax:
 
 <div class='highlighter-rouge shell'><pre>
-$ pintos --filesys-size=2 -p ../../examples/echo -a echo -- -f -q run 'echo cs318'
+pintos --filesys-size=2 -p ../../examples/echo -a echo -- -f -q run 'echo cs318'
 </pre></div>
 
 You can delete a file from the Pintos file system using the
