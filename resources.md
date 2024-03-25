@@ -25,7 +25,7 @@ about building the Bochs emulator from source.
 ## Review material
 
 The following homework assignments were prepared by
-[Prof.\ Huang](https://web.eecs.umich.edu/~ryanph/)
+[Prof. Huang](https://web.eecs.umich.edu/~ryanph/)
 for the [Fall 2022 offering of OS](https://www.cs.jhu.edu/~huang/cs318/fall22/).
 
 They are not required or graded.
@@ -38,3 +38,4 @@ Homework | Topics | Preparation for
 -------- | ------ | ---------------
 [Homework 1](resources/hw1.pdf) | Execution mode, processes, interrupts, system calls | Exam 1
 [Homework 2](resources/hw2.pdf) | Threads, scheduling, synchronization | Exam 1
+[Homework 4](resources/hw4.pdf) | Virtual memory, paging | Exam 2

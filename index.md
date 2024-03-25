@@ -35,6 +35,8 @@ Gradescope.
 
 ## News
 
+* **Mar 25** — Homework 4 (review material for Exam 2) has been posted on the
+  [Resources](resources.html) page.
 * **Mar 13** — [Assignment 2](assign/assign02.html) has been updated with submission
   instructions.
 * **Mar 13** — [Assignment 3a](assign/assign03a.html) is due
