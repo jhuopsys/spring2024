@@ -56,10 +56,11 @@ if [[ "${GIT_REPO}" = "" ]]; then
     exit 1
 fi
 
-if [[ -z $(git status -s) ]]; then
-    echo -e "${RED}Error${NC}: You have uncommitted changes, please commit them before"
-    echo -e "attempting to submit. You can also stash them if you would prefer not to"
-    echo -e "submit the changes."
+UNTRACKED_COUNT=$(git status --porcelain | grep -Fv $(basename -- "$0") | wc -l)
+if [[ ${UNTRACKED_COUNT} -ne 0 ]]; then
+    echo "${RED}Error${NC}: You have uncommitted and/or untracked changes, please commit"
+    echo "or delete them before attempting to submit."
+    echo "You can also stash them if you would prefer not to submit the changes."
     exit 1
 fi
 

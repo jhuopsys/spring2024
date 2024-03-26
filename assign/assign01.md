@@ -483,7 +483,8 @@ When you run the command
 git status -s
 </pre></div>
 
-you should see **no** output.
+you should see **no** output. Please note that is is okay to see the submission
+script itself as output, as we don't expect you to check the script in.
 
 Go to the webpage for your team's Github repository. Click on the link
 that reads "<i>N</i> commits":
