@@ -46,7 +46,7 @@ Mar 11 | [Page replacement](lectures/lecture12.pdf) | [Chapter 21](http://pages.
 Mar 13 | [Dynamic memory allocation](lectures/lecture13.pdf) | [Chapter 14](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-api.pdf), [Chapter 17](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-freespace.pdf) | [A2](assign/assign02.html) soft deadline<br>Fri 3/15
 Mar 18–22 | **Spring break, no classes** |  | 
 Mar 25 | [IO and disks](lectures/lecture14.pdf) | [Chapter 36](http://pages.cs.wisc.edu/~remzi/OSTEP/file-devices.pdf), [Chapter 37](http://pages.cs.wisc.edu/~remzi/OSTEP/file-disks.pdf) | [A2](assign/assign02.html) due
-Mar 27 | File systems | [Chapter 39](http://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf) | 
+Mar 27 | [File systems](lectures/lecture15.pdf) | [Chapter 39](http://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf) | 
 Apr 1 | File systems implementation | [Chapter 40](http://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf) | 
 Apr 3 | Slack day/exam review |  | 
 Apr 8 | **Exam 2**, in class |  | 
